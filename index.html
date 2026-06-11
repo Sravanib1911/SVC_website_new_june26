@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SVC Tech AI Solutions — Enterprise AI, Engineered for Outcomes</title>
+  <meta name="description" content="SVC Tech AI Solutions Private Limited is an enterprise AI partner delivering production-grade artificial intelligence, data and cloud systems for organisations that measure success in business outcomes." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Sora', 'Montserrat', 'system-ui', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ink:    '#0A1430',
+            navy:   '#0B3291',
+            royal:  '#1D4EA2',
+            ocean:  '#4196A2',
+            mint:   '#43E3C2',
+            sky:    '#71D6FC',
+            mist:   '#D4C2F2',
+            cloud:  '#F5F7FB',
+          },
+          boxShadow: {
+            'soft':   '0 1px 2px rgba(11,50,145,.06), 0 8px 24px rgba(11,50,145,.08)',
+            'lift':   '0 4px 12px rgba(11,50,145,.08), 0 24px 48px -12px rgba(29,78,162,.18)',
+            'glow':   '0 20px 60px -20px rgba(67,227,194,.55), 0 30px 80px -30px rgba(29,78,162,.45)',
+            'ring-mint': '0 0 0 4px rgba(67,227,194,.20)',
+          },
+          letterSpacing: {
+            tightest: '-0.035em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/site.js" defer></script>
+</head>
+
+<body class="min-h-screen">
+
+  <!-- ============ NAV ============ -->
+  <header class="fixed top-0 inset-x-0 z-50 nav-blur bg-white/70 border-b border-black/5">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <img src="band_assets/logo-icon.png" alt="SVC Tech AI Solutions" class="h-8 w-auto object-contain"/>
+        <div class="leading-tight">
+          <div class="font-display font-bold text-[15px] text-ink tracking-tight">SVC Tech AI</div>
+          <div class="text-[10px] uppercase tracking-[0.18em] text-ink/55">Solutions Pvt. Ltd.</div>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 text-[14px] font-medium text-ink/75">
+        <a href="products.html" class="hover:text-ink transition-colors">Products</a>
+        <a href="services.html" class="hover:text-ink transition-colors">Services</a>
+        <a href="education.html" class="hover:text-ink transition-colors">Education</a>
+        <a href="about.html" class="hover:text-ink transition-colors">About</a>
+        <a href="contact.html" class="hover:text-ink transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="contact.html" class="hidden sm:inline-flex btn btn-outline text-sm px-4 py-2 rounded-lg">Contact Us</a>
+        <a href="contact.html" class="btn btn-primary text-sm px-4 py-2 rounded-lg">
+          Get Started
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-black/10 text-ink/80 hover:bg-black/5 transition-colors">
+          <svg id="navIconOpen" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg id="navIconClose" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <nav id="mobileNav" class="lg:hidden hidden border-t border-black/5 bg-white/95 nav-blur">
+      <div class="max-w-7xl mx-auto px-5 py-3 flex flex-col text-[15px] font-medium text-ink/80">
+        <a href="products.html"  class="py-3 border-b border-black/5 hover:text-ink transition-colors">Products</a>
+        <a href="services.html"  class="py-3 border-b border-black/5 hover:text-ink transition-colors">Services</a>
+        <a href="education.html" class="py-3 border-b border-black/5 hover:text-ink transition-colors">Education</a>
+        <a href="about.html"     class="py-3 border-b border-black/5 hover:text-ink transition-colors">About</a>
+        <a href="contact.html"   class="py-3 border-b border-black/5 hover:text-ink transition-colors">Contact</a>
+        <a href="contact.html"   class="btn btn-primary justify-center mt-4 mb-1 px-5 py-3 rounded-xl">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ HERO (light · sky blue · animated AI agent) ============ -->
+  <section id="hero" class="relative pt-28 lg:pt-32 pb-20 lg:pb-28 overflow-hidden hero-light">
+    <div class="absolute inset-0 light-grid pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+      <!-- LEFT · Copy -->
+      <div class="lg:col-span-6 relative z-10">
+        <span class="chip">
+          <span class="w-1.5 h-1.5 rounded-full bg-mint pulse-dot"></span>
+          Enterprise AI · Production-ready
+        </span>
+
+        <h1 class="mt-6 font-display font-bold text-[38px] sm:text-[48px] lg:text-[58px] leading-[1.08] tracking-tight text-ink [text-wrap:balance]">
+          Enterprise AI.<br class="hidden sm:block"/>
+          Built for <span class="text-gradient">Scale</span>. Designed for <span class="text-gradient">Results</span>.
+        </h1>
+
+        <p class="mt-6 text-[16px] lg:text-[17px] leading-[1.75] text-ink/70 max-w-xl">
+          At SVC Tech AI Solutions, we help enterprises transform business operations through advanced
+          AI solutions tailored to strategic objectives. Our end-to-end delivery model spans consulting,
+          architecture, development, deployment, and managed operations ensuring every AI initiative is
+          aligned with business goals, integrated with enterprise systems, and built to scale securely
+          across the organization.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a href="contact.html" class="btn btn-primary px-5 py-3 rounded-xl">
+            Schedule a consultation
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="services.html" class="btn btn-outline px-5 py-3 rounded-xl">
+            Browse capabilities
+          </a>
+        </div>
+
+        <!-- Trust strip -->
+        <div class="mt-12 grid grid-cols-3 gap-6 max-w-xl">
+          <div>
+            <div class="font-display font-bold text-3xl text-ink">30+</div>
+            <div class="text-xs uppercase tracking-wider text-ink/55 mt-1">Projects delivered</div>
+          </div>
+          <div>
+            <div class="font-display font-bold text-3xl text-ink">20+</div>
+            <div class="text-xs uppercase tracking-wider text-ink/55 mt-1">Enterprise clients</div>
+          </div>
+          <div>
+            <div class="font-display font-bold text-3xl text-ink">99.9<span class="text-ocean">%</span></div>
+            <div class="text-xs uppercase tracking-wider text-ink/55 mt-1">Operational uptime</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT · Animated AI Agent stage -->
+      <div class="lg:col-span-6 relative">
+        <div class="relative mx-auto w-full max-w-[560px] h-[460px] sm:h-[520px] lg:h-[600px]">
+
+          <!-- Aura -->
+          <div class="absolute inset-0 grid place-items-center">
+            <div class="aura-pulse w-[420px] h-[420px] rounded-full"
+                 style="background: radial-gradient(circle,
+                   rgba(113,214,252,.55) 0%,
+                   rgba(67,227,194,.22) 38%,
+                   rgba(113,214,252,0) 70%);">
+            </div>
+          </div>
+
+          <!-- Concentric rings around agent -->
+          <div class="absolute inset-0 grid place-items-center pointer-events-none">
+            <div class="ring-pulse-1 w-[300px] h-[300px] rounded-full border border-sky/40"></div>
+          </div>
+          <div class="absolute inset-0 grid place-items-center pointer-events-none">
+            <div class="ring-pulse-2 w-[300px] h-[300px] rounded-full border border-mint/50"></div>
+          </div>
+
+          <!-- Floating particles -->
+          <span class="particle" style="left:18%; bottom:12%; animation-delay:0s;"></span>
+          <span class="particle" style="left:62%; bottom:18%; animation-delay:1.2s; width:6px; height:6px;"></span>
+          <span class="particle" style="left:38%; bottom:6%;  animation-delay:2.4s;"></span>
+          <span class="particle" style="left:78%; bottom:24%; animation-delay:3.1s; width:5px; height:5px;"></span>
+          <span class="particle" style="left:28%; bottom:32%; animation-delay:4.0s; width:6px; height:6px;"></span>
+          <span class="particle" style="left:54%; bottom:10%; animation-delay:5.2s;"></span>
+
+          <!-- Floating UI card A · Analytics -->
+          <div class="float-a absolute top-[2%] left-[-2%] sm:left-[-4%] w-[180px] rounded-2xl bg-white shadow-soft border border-black/5 p-3.5 z-20">
+            <div class="flex items-center justify-between text-[10px] font-semibold text-ink/45 uppercase tracking-[0.14em]">
+              <span>Forecast</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-mint"></span>
+            </div>
+            <div class="mt-2 flex items-end justify-between gap-1 h-12">
+              <div class="w-3 bg-sky/40 rounded-t" style="height:38%"></div>
+              <div class="w-3 bg-sky/60 rounded-t" style="height:58%"></div>
+              <div class="w-3 bg-sky/80 rounded-t" style="height:46%"></div>
+              <div class="w-3 bg-mint/70 rounded-t" style="height:74%"></div>
+              <div class="w-3 bg-mint rounded-t" style="height:88%"></div>
+              <div class="w-3 bg-mint rounded-t" style="height:64%"></div>
+              <div class="w-3 bg-mint/70 rounded-t" style="height:92%"></div>
+            </div>
+            <div class="mt-1.5 flex items-center justify-between text-[11px]">
+              <span class="text-ink/55">Accuracy</span>
+              <span class="text-royal font-semibold">+24.6%</span>
+            </div>
+          </div>
+
+          <!-- Floating UI card B · Agent chat -->
+          <div class="float-b absolute top-[28%] right-[-4%] sm:right-[-6%] w-[210px] rounded-2xl bg-white shadow-soft border border-black/5 p-3.5 z-20">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-sky to-mint grid place-items-center text-navy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 3a4 4 0 014 4v1a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 01-4-4 4 4 0 014-4V7a4 4 0 014-4z" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <div class="leading-tight">
+                <div class="text-[12px] font-semibold text-ink">SVC Agent</div>
+                <div class="text-[10px] text-ink/55">Reasoning · live</div>
+              </div>
+            </div>
+            <div class="mt-3 text-[12px] text-ink/75 leading-[1.55]">
+              Routing user to <span class="font-semibold text-royal">/pricing</span> based on intent…
+            </div>
+            <div class="mt-2.5 flex items-center gap-1.5">
+              <span class="tdot-1 w-1.5 h-1.5 rounded-full bg-royal"></span>
+              <span class="tdot-2 w-1.5 h-1.5 rounded-full bg-royal"></span>
+              <span class="tdot-3 w-1.5 h-1.5 rounded-full bg-royal"></span>
+            </div>
+          </div>
+
+          <!-- Floating UI card C · Page generation -->
+          <div class="float-c absolute bottom-[6%] left-[-1%] sm:left-[-3%] w-[200px] rounded-2xl bg-white shadow-soft border border-black/5 p-3.5 z-20">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-sky/20 text-royal grid place-items-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="leading-tight">
+                <div class="text-[12px] font-semibold text-ink">Hero / V2</div>
+                <div class="text-[10px] text-ink/55">Generating…</div>
+              </div>
+            </div>
+            <div class="mt-2.5 h-1.5 rounded-full bg-cloud overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-sky to-mint" style="width:64%"></div>
+            </div>
+            <div class="mt-1.5 flex items-center justify-between text-[10px] text-ink/55">
+              <span>4 of 6 steps</span><span class="text-royal font-semibold">64%</span>
+            </div>
+          </div>
+
+          <!-- Connecting dashed lines (agent → cards) -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 560 600" preserveAspectRatio="none">
+            <g stroke="#71D6FC" stroke-width="1.5" fill="none" opacity=".55">
+              <path class="dash-flow" d="M270 280 Q180 200 100 100"/>
+              <path class="dash-flow" d="M310 280 Q420 240 480 200"/>
+              <path class="dash-flow" d="M260 360 Q170 460 120 520"/>
+            </g>
+          </svg>
+
+          <!-- ===== AI AGENT (SVG) ===== -->
+          <div class="absolute inset-0 grid place-items-center z-10">
+            <svg viewBox="0 0 360 540" xmlns="http://www.w3.org/2000/svg"
+                 class="agent-float w-[280px] sm:w-[320px] lg:w-[360px] h-auto drop-shadow-[0_30px_40px_rgba(11,50,145,0.18)]">
+              <defs>
+                <linearGradient id="bodyG" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%"  stop-color="#FFFFFF"/>
+                  <stop offset="100%" stop-color="#BEE9FC"/>
+                </linearGradient>
+                <linearGradient id="accentG" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%"   stop-color="#43E3C2"/>
+                  <stop offset="100%" stop-color="#71D6FC"/>
+                </linearGradient>
+                <radialGradient id="visorG" cx=".5" cy=".55" r=".55">
+                  <stop offset="0%"   stop-color="#43E3C2"/>
+                  <stop offset="55%"  stop-color="#1D4EA2"/>
+                  <stop offset="100%" stop-color="#0B3291"/>
+                </radialGradient>
+                <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4"/>
+                </filter>
+              </defs>
+
+              <!-- Antenna stalk -->
+              <line x1="180" y1="80" x2="180" y2="52" stroke="#1D4EA2" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Antenna glow -->
+              <circle cx="180" cy="46" r="14" fill="#43E3C2" opacity=".25" filter="url(#soft)">
+                <animate attributeName="r" values="10;18;10" dur="1.8s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="180" cy="46" r="7" fill="#43E3C2">
+                <animate attributeName="opacity" values="1;.45;1" dur="1.8s" repeatCount="indefinite"/>
+              </circle>
+
+              <!-- HEAD -->
+              <rect x="100" y="80" width="160" height="142" rx="40"
+                    fill="url(#bodyG)" stroke="#1D4EA2" stroke-opacity=".18" stroke-width="1.5"/>
+              <!-- Side ear panels -->
+              <rect x="92"  y="128" width="12" height="48" rx="6" fill="url(#accentG)"/>
+              <rect x="256" y="128" width="12" height="48" rx="6" fill="url(#accentG)"/>
+
+              <!-- Visor -->
+              <rect x="120" y="120" width="120" height="58" rx="26" fill="url(#visorG)"/>
+              <!-- Visor highlight -->
+              <ellipse cx="148" cy="135" rx="22" ry="6" fill="#FFFFFF" opacity=".22"/>
+              <!-- Eyes -->
+              <g class="agent-blink">
+                <circle cx="155" cy="150" r="8" fill="#FFFFFF"/>
+                <circle cx="205" cy="150" r="8" fill="#FFFFFF"/>
+                <circle cx="157" cy="148" r="2.5" fill="#43E3C2"/>
+                <circle cx="207" cy="148" r="2.5" fill="#43E3C2"/>
+              </g>
+              <!-- Mouth bar -->
+              <rect x="162" y="195" width="36" height="6" rx="3" fill="#0B3291" opacity=".22"/>
+
+              <!-- Neck -->
+              <rect x="168" y="222" width="24" height="14" fill="#BEE9FC"/>
+
+              <!-- BODY -->
+              <path d="M118 238 Q180 226 242 238 L254 360 Q180 382 106 360 Z"
+                    fill="url(#bodyG)" stroke="#1D4EA2" stroke-opacity=".18" stroke-width="1.5"/>
+
+              <!-- Chest panel -->
+              <rect x="146" y="268" width="68" height="64" rx="14" fill="#FFFFFF" stroke="#71D6FC" stroke-opacity=".55"/>
+              <!-- Chest light -->
+              <circle cx="180" cy="298" r="14" fill="url(#accentG)">
+                <animate attributeName="r" values="11;16;11" dur="2.4s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="180" cy="298" r="6" fill="#FFFFFF"/>
+              <!-- Chest equalizer bars -->
+              <rect x="156" y="320" width="6"  height="3" rx="1.5" fill="#71D6FC"/>
+              <rect x="166" y="320" width="14" height="3" rx="1.5" fill="#71D6FC"/>
+              <rect x="184" y="320" width="10" height="3" rx="1.5" fill="#71D6FC"/>
+              <rect x="198" y="320" width="6"  height="3" rx="1.5" fill="#71D6FC"/>
+
+              <!-- LEFT ARM (resting) -->
+              <g>
+                <rect x="86" y="248" width="22" height="100" rx="11"
+                      fill="url(#bodyG)" stroke="#1D4EA2" stroke-opacity=".18" stroke-width="1.5"/>
+                <circle cx="97" cy="355" r="14"
+                        fill="url(#bodyG)" stroke="#1D4EA2" stroke-opacity=".18" stroke-width="1.5"/>
+              </g>
+
+              <!-- RIGHT ARM (raised, animated wave) -->
+              <g class="agent-arm-wave" style="transform-origin: 263px 248px;">
+                <rect x="252" y="170" width="22" height="86" rx="11"
+                      fill="url(#bodyG)" stroke="#1D4EA2" stroke-opacity=".18" stroke-width="1.5"/>
+                <!-- Hand -->
+                <circle cx="263" cy="160" r="15"
+                        fill="url(#bodyG)" stroke="#1D4EA2" stroke-opacity=".18" stroke-width="1.5"/>
+                <!-- Pointing fingertip dot -->
+                <circle cx="263" cy="147" r="5" fill="#43E3C2">
+                  <animate attributeName="opacity" values=".6;1;.6" dur="1.5s" repeatCount="indefinite"/>
+                </circle>
+              </g>
+
+              <!-- Underbody thrust -->
+              <g opacity=".6">
+                <path d="M170 378 L180 400 L190 378 Z" fill="url(#accentG)">
+                  <animate attributeName="opacity" values=".4;.9;.4" dur="1.6s" repeatCount="indefinite"/>
+                </path>
+              </g>
+
+              <!-- HOVER PLATFORM -->
+              <ellipse cx="180" cy="430" rx="120" ry="18" fill="#71D6FC" opacity=".25" filter="url(#soft)"/>
+              <ellipse cx="180" cy="430" rx="82"  ry="12" fill="url(#accentG)" opacity=".55"/>
+              <ellipse cx="180" cy="430" rx="48"  ry="7"  fill="#FFFFFF"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo marquee (light) -->
+    <div class="relative mt-16 lg:mt-20">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center text-[11px] uppercase tracking-[0.25em] text-ink/45">
+          Delivering enterprise-grade services across industries
+        </div>
+      </div>
+      <div class="marquee mt-6 overflow-hidden">
+        <div class="marquee-track flex gap-14 whitespace-nowrap w-max text-ink/35 font-display font-semibold text-xl">
+          <span>AI &amp; MACHINE LEARNING</span><span>·</span><span>DATA ANALYTICS</span><span>·</span><span>AUTOMATION &amp; ROBOTICS</span><span>·</span><span>SOFTWARE ENGINEERING</span><span>·</span><span>DATA ENGINEERING</span><span>·</span><span>INTELLIGENT SYSTEMS</span><span>·</span><span>MANAGED OPERATIONS</span><span>·</span>
+          <span>AI &amp; MACHINE LEARNING</span><span>·</span><span>DATA ANALYTICS</span><span>·</span><span>AUTOMATION &amp; ROBOTICS</span><span>·</span><span>SOFTWARE ENGINEERING</span><span>·</span><span>DATA ENGINEERING</span><span>·</span><span>INTELLIGENT SYSTEMS</span><span>·</span><span>MANAGED OPERATIONS</span><span>·</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="relative py-24 lg:py-32 bg-cloud">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+        <!-- LEFT · Copy -->
+        <div class="lg:col-span-7">
+          <span class="chip">Capabilities</span>
+          <h2 class="mt-5 font-display font-bold text-[34px] sm:text-[42px] lg:text-[52px] leading-[1.05] tracking-tightest text-ink">
+            Comprehensive Engineering Expertise for <span class="text-gradient">Enterprise Transformation</span>.
+          </h2>
+          <p class="mt-5 text-ink/65 text-[17px] leading-[1.7]">
+            SVC Tech AI Solutions brings together specialized expertise across AI, data, automation,
+            and software engineering to solve complex business challenges. Our multidisciplinary teams
+            design, build, and operate intelligent systems that enhance efficiency, strengthen
+            decision-making, and support sustainable growth at enterprise scale.
+          </p>
+        </div>
+
+        <!-- RIGHT · Capability overview panel -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-3xl bg-white border border-black/5 shadow-lift p-7 lg:p-8 overflow-hidden">
+            <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full pointer-events-none"
+                 style="background: radial-gradient(circle, rgba(67,227,194,.28) 0%, rgba(113,214,252,.10) 45%, transparent 72%);"></div>
+
+            <div class="relative">
+              <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-royal">
+                <span class="w-1.5 h-1.5 rounded-full bg-mint pulse-dot"></span>
+                Capability overview
+              </div>
+
+              <div class="mt-6 grid grid-cols-2 gap-y-6 gap-x-5">
+                <div>
+                  <div class="font-display font-bold text-[34px] leading-none text-ink">6</div>
+                  <div class="text-[11px] uppercase tracking-wider text-ink/55 mt-2">Integrated practices</div>
+                </div>
+                <div>
+                  <div class="font-display font-bold text-[34px] leading-none text-ink">4</div>
+                  <div class="text-[11px] uppercase tracking-wider text-ink/55 mt-2">Core disciplines</div>
+                </div>
+                <div>
+                  <div class="font-display font-bold text-[34px] leading-none text-ink">24/7</div>
+                  <div class="text-[11px] uppercase tracking-wider text-ink/55 mt-2">Managed operations</div>
+                </div>
+                <div>
+                  <div class="font-display font-bold text-[34px] leading-none text-ink">100<span class="text-ocean">%</span></div>
+                  <div class="text-[11px] uppercase tracking-wider text-ink/55 mt-2">Production-governed</div>
+                </div>
+              </div>
+
+              <div class="mt-7 pt-6 border-t border-black/5 flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-medium bg-cloud text-ink/70 border border-black/5">AI</span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-medium bg-cloud text-ink/70 border border-black/5">Data</span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-medium bg-cloud text-ink/70 border border-black/5">Automation</span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-medium bg-cloud text-ink/70 border border-black/5">Software</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- 1 -->
+        <article class="card p-6">
+          <div class="icon-tile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3a4 4 0 014 4v1a4 4 0 014 4v1a4 4 0 01-4 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 01-4-4v-1a4 4 0 014-4V7a4 4 0 014-4z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+          </div>
+          <h3 class="mt-5 font-display font-semibold text-xl text-ink">AI &amp; Machine Learning</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Production models, MLOps and continuous training pipelines engineered for measurable business impact.</p>
+        </article>
+
+        <!-- 2 -->
+        <article class="card p-6">
+          <div class="icon-tile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="mt-5 font-display font-semibold text-xl text-ink">Data Analytics</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Real-time dashboards and decision-intelligence layers that translate enterprise data into governed insight.</p>
+        </article>
+
+        <!-- 5 -->
+        <article class="card p-6">
+          <div class="icon-tile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="8" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 8V5a3 3 0 116 0v3M9 14h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="mt-5 font-display font-semibold text-xl text-ink">Automation &amp; Robotics</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">RPA, agentic workflows and industrial computer vision — automating repeatable processes at enterprise scale.</p>
+        </article>
+
+        <!-- 7 -->
+        <article class="card p-6">
+          <div class="icon-tile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 4l-4 4 4 4M16 12l4 4-4 4M14 4l-4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="mt-5 font-display font-semibold text-xl text-ink">Software Engineering</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Custom web, mobile and SaaS platforms — engineered for performance, scalability and long-term maintainability.</p>
+        </article>
+
+        <!-- 8 -->
+        <article class="card p-6">
+          <div class="icon-tile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="7" ry="3" stroke="currentColor" stroke-width="1.6"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <h3 class="mt-5 font-display font-semibold text-xl text-ink">Data Engineering</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Modern lakehouses, ELT pipelines and data-governance frameworks for trustworthy enterprise data assets.</p>
+        </article>
+
+        <!-- 9 -->
+        <article class="card p-6">
+          <div class="icon-tile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="mt-5 font-display font-semibold text-xl text-ink">Intelligent Systems</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Multi-agent platforms, copilots and decision engines that operate on enterprise context in real time.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT / WHY US ============ -->
+  <section id="about" class="relative py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-14 items-center">
+      <div class="lg:col-span-6">
+        <span class="chip">Why SVC</span>
+        <h2 class="mt-5 font-display font-bold text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.05] tracking-tightest text-ink">
+          Turning Technology Investments into <span class="text-gradient">Business Outcomes</span>.
+        </h2>
+        <p class="mt-5 text-ink/65 text-[17px] leading-[1.7]">
+          SVC Tech AI Solutions helps enterprises leverage AI, data, cloud, and software engineering
+          to improve efficiency, accelerate growth, and create lasting competitive advantage.
+        </p>
+
+        <ul class="mt-8 space-y-3.5">
+          <li class="grid sm:grid-cols-2 gap-3.5 list-none">
+            <div class="group rounded-2xl border border-black/5 bg-white p-4 sm:p-5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:shadow-lift">
+              <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-sky to-mint text-navy grid place-items-center shadow-ring-mint transition-transform duration-300 group-hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>
+              </span>
+              <div class="mt-4 font-display font-semibold text-ink">Outcome-Driven Delivery</div>
+              <p class="mt-1 text-ink/65 text-[15px] leading-[1.7]">Every engagement is aligned with measurable business goals and designed to deliver tangible results.</p>
+            </div>
+            <div class="group rounded-2xl border border-black/5 bg-white p-4 sm:p-5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:shadow-lift">
+              <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-sky to-mint text-navy grid place-items-center shadow-ring-mint transition-transform duration-300 group-hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v6c0 4.6-3.4 8.4-8 9-4.6-.6-8-4.4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="mt-4 font-display font-semibold text-ink">Trusted by Design</div>
+              <p class="mt-1 text-ink/65 text-[15px] leading-[1.7]">Security, governance, and compliance are embedded throughout the solution lifecycle.</p>
+            </div>
+          </li>
+          <li class="grid sm:grid-cols-2 gap-3.5 list-none">
+            <div class="group rounded-2xl border border-black/5 bg-white p-4 sm:p-5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:shadow-lift">
+              <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-sky to-mint text-navy grid place-items-center shadow-ring-mint transition-transform duration-300 group-hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4-8 4-8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 12l8 4 8-4M4 17l8 4 8-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="mt-4 font-display font-semibold text-ink">Built for Enterprise Scale</div>
+              <p class="mt-1 text-ink/65 text-[15px] leading-[1.7]">Robust, cloud-native architectures engineered for performance, reliability, and long-term growth.</p>
+            </div>
+            <div class="group rounded-2xl border border-black/5 bg-white p-4 sm:p-5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:shadow-lift">
+              <span class="w-11 h-11 rounded-xl bg-gradient-to-br from-sky to-mint text-navy grid place-items-center shadow-ring-mint transition-transform duration-300 group-hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <div class="mt-4 font-display font-semibold text-ink">Expertise That Delivers</div>
+              <p class="mt-1 text-ink/65 text-[15px] leading-[1.7]">Senior engineers and technology specialists focused on solving complex business challenges with precision and accountability.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-6">
+        <div class="relative">
+          <div class="aura-pulse absolute -inset-6 rounded-[28px] bg-gradient-to-br from-sky/30 via-mint/20 to-royal/20 blur-2xl"></div>
+
+          <div class="reveal stat-card relative p-6 lg:p-7 overflow-hidden">
+            <!-- Header -->
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-royal">Business impact</div>
+                <div class="mt-1.5 font-display font-bold text-xl text-ink">Outcomes that compound</div>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-ink/55 px-2.5 py-1 rounded-full bg-cloud border border-black/5">
+                <span class="w-1.5 h-1.5 rounded-full bg-mint pulse-dot"></span> Trending up
+              </span>
+            </div>
+
+            <!-- Animated growth chart -->
+            <svg class="mt-6 w-full h-auto" viewBox="0 0 480 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Growth trend chart">
+              <defs>
+                <linearGradient id="whyLine" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#1D4EA2"/>
+                  <stop offset="55%" stop-color="#4196A2"/>
+                  <stop offset="100%" stop-color="#43E3C2"/>
+                </linearGradient>
+                <linearGradient id="whyArea" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#43E3C2" stop-opacity=".30"/>
+                  <stop offset="100%" stop-color="#43E3C2" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+
+              <!-- gridlines -->
+              <g class="chart-grid">
+                <line x1="20" y1="40"  x2="460" y2="40"/>
+                <line x1="20" y1="90"  x2="460" y2="90"/>
+                <line x1="20" y1="140" x2="460" y2="140"/>
+                <line x1="20" y1="190" x2="460" y2="190"/>
+              </g>
+
+              <!-- area fill -->
+              <path class="chart-area" fill="url(#whyArea)"
+                    d="M20 158 L112 138 L204 146 L296 100 L388 74 L460 38 L460 190 L20 190 Z"/>
+
+              <!-- animated line -->
+              <path class="chart-line" stroke="url(#whyLine)" pathLength="1"
+                    d="M20 158 L112 138 L204 146 L296 100 L388 74 L460 38"/>
+
+              <!-- vertex dots -->
+              <circle class="chart-dot" style="animation-delay:.6s"  cx="20"  cy="158" r="4" fill="#1D4EA2"/>
+              <circle class="chart-dot" style="animation-delay:.85s" cx="112" cy="138" r="4" fill="#2C6FA6"/>
+              <circle class="chart-dot" style="animation-delay:1.1s" cx="204" cy="146" r="4" fill="#3A86A4"/>
+              <circle class="chart-dot" style="animation-delay:1.35s" cx="296" cy="100" r="4" fill="#43A0AE"/>
+              <circle class="chart-dot" style="animation-delay:1.6s" cx="388" cy="74"  r="4" fill="#43C7B9"/>
+
+              <!-- pulsing endpoint -->
+              <circle class="chart-pulse" cx="460" cy="38" r="5" fill="#43E3C2"/>
+              <circle class="chart-dot" style="animation-delay:1.85s" cx="460" cy="38" r="5" fill="#43E3C2" stroke="#fff" stroke-width="2"/>
+            </svg>
+
+            <!-- Stats strip -->
+            <div class="mt-6 pt-5 border-t border-black/5 grid grid-cols-2 gap-x-6 gap-y-5">
+              <div>
+                <div class="font-display font-bold text-3xl text-ink leading-none"><span class="count-up" data-count="4">0</span><span class="text-royal">+</span></div>
+                <div class="mt-1.5 text-[12px] text-ink/55">Years delivering enterprise AI</div>
+              </div>
+              <div>
+                <div class="font-display font-bold text-3xl text-ink leading-none"><span class="count-up" data-count="30">0</span><span class="text-royal">+</span></div>
+                <div class="mt-1.5 text-[12px] text-ink/55">Projects delivered end-to-end</div>
+              </div>
+              <div>
+                <div class="font-display font-bold text-3xl text-ink leading-none"><span class="count-up" data-count="20">0</span><span class="text-royal">+</span></div>
+                <div class="mt-1.5 text-[12px] text-ink/55">Enterprise &amp; mid-market clients</div>
+              </div>
+              <div>
+                <div class="font-display font-bold text-3xl text-ink leading-none"><span class="count-up" data-count="6">0</span><span class="text-royal">+</span></div>
+                <div class="mt-1.5 text-[12px] text-ink/55">Countries served across regions</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section id="process" class="relative py-24 lg:py-32 bg-ink text-white grain overflow-hidden">
+    <div class="absolute inset-0 opacity-60"
+      style="background:
+        radial-gradient(40% 40% at 10% 0%, rgba(67,227,194,.18), transparent 60%),
+        radial-gradient(40% 40% at 95% 100%, rgba(113,214,252,.18), transparent 60%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl">
+        <span class="chip chip-dark">Engagement model</span>
+        <h2 class="mt-5 font-display font-bold text-[34px] sm:text-[42px] lg:text-[52px] leading-[1.05] tracking-tightest">
+          A disciplined path from <span class="text-white">strategy to impact</span>.
+        </h2>
+        <p class="mt-5 text-white/70 text-[17px] leading-[1.7]">
+          A transparent four-phase engagement model designed to de-risk AI investment and deliver
+          measurable value in weeks, not quarters.
+        </p>
+      </div>
+
+      <div class="mt-16 relative">
+        <!-- Connector line (desktop) -->
+        <div class="hidden lg:block absolute left-0 right-0 top-[26px] h-px bg-gradient-to-r from-mint/0 via-mint/40 to-sky/0"></div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 relative">
+          <!-- Step 1 -->
+          <div class="reveal group relative" style="transition-delay:.05s">
+            <div class="relative z-10 w-[52px] h-[52px] rounded-full grid place-items-center font-display font-bold text-navy bg-gradient-to-br from-sky to-mint ring-4 ring-ink shadow-glow">01</div>
+            <div class="mt-5 h-[calc(100%-72px)] rounded-2xl bg-white/[0.04] border border-white/10 p-6 backdrop-blur-sm transition-all duration-300 group-hover:border-mint/40 group-hover:bg-white/[0.06] group-hover:-translate-y-1">
+              <div class="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-mint/80">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Discover
+              </div>
+              <h3 class="mt-3 font-display font-semibold text-xl">Strategy &amp; Discovery</h3>
+              <p class="mt-2 text-white/65 text-[15px] leading-[1.7]">We profile your business objectives, data landscape and the highest-leverage AI opportunities.</p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="reveal group relative" style="transition-delay:.15s">
+            <div class="relative z-10 w-[52px] h-[52px] rounded-full grid place-items-center font-display font-bold text-navy bg-gradient-to-br from-sky to-mint ring-4 ring-ink shadow-glow">02</div>
+            <div class="mt-5 h-[calc(100%-72px)] rounded-2xl bg-white/[0.04] border border-white/10 p-6 backdrop-blur-sm transition-all duration-300 group-hover:border-mint/40 group-hover:bg-white/[0.06] group-hover:-translate-y-1">
+              <div class="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-mint/80">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 5-9 5-9-5 9-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 13l9 5 9-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Design
+              </div>
+              <h3 class="mt-3 font-display font-semibold text-xl">Architecture &amp; Prototype</h3>
+              <p class="mt-2 text-white/65 text-[15px] leading-[1.7]">Reference architectures, rapid prototypes and validated proof points tested against your production data.</p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="reveal group relative" style="transition-delay:.25s">
+            <div class="relative z-10 w-[52px] h-[52px] rounded-full grid place-items-center font-display font-bold text-navy bg-gradient-to-br from-sky to-mint ring-4 ring-ink shadow-glow">03</div>
+            <div class="mt-5 h-[calc(100%-72px)] rounded-2xl bg-white/[0.04] border border-white/10 p-6 backdrop-blur-sm transition-all duration-300 group-hover:border-mint/40 group-hover:bg-white/[0.06] group-hover:-translate-y-1">
+              <div class="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-mint/80">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 5l-2 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Build
+              </div>
+              <h3 class="mt-3 font-display font-semibold text-xl">Engineer &amp; Deploy</h3>
+              <p class="mt-2 text-white/65 text-[15px] leading-[1.7]">Production-grade systems shipped through CI/CD with end-to-end observability, governance and rollback safety.</p>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="reveal group relative" style="transition-delay:.35s">
+            <div class="relative z-10 w-[52px] h-[52px] rounded-full grid place-items-center font-display font-bold text-navy bg-gradient-to-br from-sky to-mint ring-4 ring-ink shadow-glow">04</div>
+            <div class="mt-5 h-[calc(100%-72px)] rounded-2xl bg-white/[0.04] border border-white/10 p-6 backdrop-blur-sm transition-all duration-300 group-hover:border-mint/40 group-hover:bg-white/[0.06] group-hover:-translate-y-1">
+              <div class="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-mint/80">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 7h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Scale
+              </div>
+              <h3 class="mt-3 font-display font-semibold text-xl">Operate &amp; Evolve</h3>
+              <p class="mt-2 text-white/65 text-[15px] leading-[1.7]">Continuous improvement, model monitoring and roadmap stewardship as your AI programme matures.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INDUSTRIES ============ -->
+  <section id="industries" class="relative py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="max-w-2xl">
+          <span class="chip">Industries we serve</span>
+          <h2 class="mt-5 font-display font-bold text-[34px] sm:text-[42px] lg:text-[50px] leading-[1.05] tracking-tightest text-ink">
+            Domain-specific intelligence for <span class="text-gradient">regulated industries</span>.
+          </h2>
+        </div>
+        <a href="contact.html" class="btn btn-outline px-4 py-2.5 rounded-lg text-sm self-start lg:self-auto">
+          Discuss your sector
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Sector 01 -->
+        <div class="reveal group relative overflow-hidden rounded-2xl border border-ink/10 p-6 bg-white hover:shadow-lift hover:border-mint/40 hover:-translate-y-1 transition-all duration-300" style="transition-delay:.05s">
+          <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background:radial-gradient(circle, rgba(67,227,194,.20), transparent 70%)"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky to-mint text-navy grid place-items-center shadow-ring-mint transition-transform duration-300 group-hover:scale-105">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 5H3l9-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-ink/35 font-semibold">01</span>
+            </div>
+            <h3 class="mt-5 font-display font-semibold text-xl text-ink">Financial Services</h3>
+            <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Fraud detection, credit risk intelligence, regulatory compliance and conversational banking.</p>
+          </div>
+        </div>
+        <!-- Sector 02 -->
+        <div class="reveal group relative overflow-hidden rounded-2xl border border-ink/10 p-6 bg-white hover:shadow-lift hover:border-mint/40 hover:-translate-y-1 transition-all duration-300" style="transition-delay:.15s">
+          <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background:radial-gradient(circle, rgba(67,227,194,.20), transparent 70%)"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky to-mint text-navy grid place-items-center shadow-ring-mint transition-transform duration-300 group-hover:scale-105">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.4-7 10-7 10z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5.5 12H9l1.5-3 2 5L14 12h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-ink/35 font-semibold">02</span>
+            </div>
+            <h3 class="mt-5 font-display font-semibold text-xl text-ink">Healthcare &amp; Life Sciences</h3>
+            <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Clinical decision support, imaging AI, claims automation and operational analytics.</p>
+          </div>
+        </div>
+        <!-- Sector 03 -->
+        <div class="reveal group relative overflow-hidden rounded-2xl border border-ink/10 p-6 bg-white hover:shadow-lift hover:border-mint/40 hover:-translate-y-1 transition-all duration-300" style="transition-delay:.25s">
+          <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background:radial-gradient(circle, rgba(67,227,194,.20), transparent 70%)"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky to-mint text-navy grid place-items-center shadow-ring-mint transition-transform duration-300 group-hover:scale-105">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 8h14l-1 12H6L5 8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8a3 3 0 016 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-ink/35 font-semibold">03</span>
+            </div>
+            <h3 class="mt-5 font-display font-semibold text-xl text-ink">Retail &amp; Consumer</h3>
+            <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Personalisation, demand forecasting, pricing intelligence and intelligent storefronts.</p>
+          </div>
+        </div>
+        <!-- Sector 04 -->
+        <div class="reveal group relative overflow-hidden rounded-2xl border border-ink/10 p-6 bg-white hover:shadow-lift hover:border-mint/40 hover:-translate-y-1 transition-all duration-300" style="transition-delay:.35s">
+          <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background:radial-gradient(circle, rgba(67,227,194,.20), transparent 70%)"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky to-mint text-navy grid place-items-center shadow-ring-mint transition-transform duration-300 group-hover:scale-105">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.7" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="18" r="1.7" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-ink/35 font-semibold">04</span>
+            </div>
+            <h3 class="mt-5 font-display font-semibold text-xl text-ink">Manufacturing &amp; Logistics</h3>
+            <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Predictive maintenance, computer-vision quality control and supply-chain optimisation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIAL ============ -->
+  <section class="relative py-20 lg:py-28 bg-cloud">
+    <div class="max-w-5xl mx-auto px-5 lg:px-8 text-center">
+      <svg class="mx-auto" width="40" height="32" viewBox="0 0 40 32" fill="none">
+        <path d="M0 32V20C0 9 6 1 18 0v6c-6 1-9 5-9 11h9v15H0zm22 0V20C22 9 28 1 40 0v6c-6 1-9 5-9 11h9v15H22z" fill="#0B3291" fill-opacity="0.12"/>
+      </svg>
+      <blockquote class="mt-6 font-display font-semibold text-[24px] sm:text-[30px] lg:text-[36px] leading-[1.25] tracking-tight text-ink">
+        “SVC feels like an extension of our own team. Open, dependable and accountable.
+        They deliver exactly what they promise, and we trust them with what matters most.”
+      </blockquote>
+      <div class="mt-8 flex items-center justify-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-royal to-mint ring-2 ring-white shadow-soft"></div>
+        <div class="text-left">
+          <div class="font-display font-semibold text-ink">Ram Kotiashwer Rao</div>
+          <div class="text-sm text-ink/55">CEO, Chatura — UK-based company</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section id="contact" class="relative py-24 lg:py-28">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="relative overflow-hidden rounded-3xl p-10 lg:p-16 grain
+        bg-[radial-gradient(60%_50%_at_85%_10%,rgba(67,227,194,0.30),transparent_60%),radial-gradient(45%_45%_at_12%_20%,rgba(113,214,252,0.30),transparent_65%),linear-gradient(135deg,#0B1A45_0%,#0E2466_60%,#0B3291_100%)]">
+
+        <div class="absolute inset-0 grid-lines pointer-events-none"></div>
+
+        <div class="relative grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7">
+            <span class="chip chip-dark">Engage with us</span>
+            <h2 class="mt-5 font-display font-bold text-[32px] sm:text-[42px] lg:text-[48px] leading-[1.05] tracking-tightest text-white">
+              Convert AI investment into <br/>measurable competitive advantage.
+            </h2>
+            <p class="mt-5 text-white/75 text-[17px] leading-[1.7] max-w-xl">
+              Share your priorities and a senior partner will respond within one business day —
+              with a structured, no-obligation engagement proposal.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="mailto:contact@svctechai.com" class="btn btn-primary px-5 py-3 rounded-xl">
+                Request a consultation
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="contact.html" class="btn btn-ghost px-5 py-3 rounded-xl">
+                Contact us
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl bg-white/[0.06] border border-white/15 p-6 backdrop-blur-xl">
+              <div class="text-[11px] uppercase tracking-[0.2em] text-white/55">Direct line</div>
+              <ul class="mt-4 space-y-4 text-white">
+                <li class="flex items-center gap-3">
+                  <span class="w-9 h-9 rounded-lg bg-white/10 grid place-items-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+                  </span>
+                  <a href="mailto:contact@svctechai.com" class="hover:text-mint transition-colors">contact@svctechai.com</a>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="w-9 h-9 rounded-lg bg-white/10 grid place-items-center flex-none">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+                  </span>
+                  <span class="text-white/80 leading-[1.6]">Flat 302, MIG-37, Rd Number 1, opposite Global Eye Hospital, beside Swiss Castle line, Kukatpally Housing Board Colony, KPHB Phase 1, Kukatpally, Hyderabad, Telangana 500072</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink text-white/70">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+      <div class="grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-5">
+          <div class="flex items-center gap-3">
+            <img src="band_assets/logo-icon.png" alt="SVC" class="h-10 w-auto object-contain bg-white rounded-lg p-1.5" />
+            <div class="leading-tight">
+              <div class="font-display font-bold text-white">SVC Tech AI Solutions</div>
+              <div class="text-[11px] uppercase tracking-[0.18em] text-white/45">Private Limited</div>
+            </div>
+          </div>
+          <p class="mt-5 max-w-md text-[15px] leading-[1.7]">
+            SVC Tech AI Solutions Private Limited — a registered Indian enterprise building
+            intelligent, scalable AI systems for organisations that measure success in business
+            outcomes, not experiments.
+          </p>
+          <div class="mt-6 flex items-center gap-3">
+            <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-mint hover:text-ink grid place-items-center transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM6 2.5a2 2 0 110 4 2 2 0 010-4zM10 8h4v2c.7-1.3 2.2-2.3 4-2.3 3.3 0 5 2 5 5.6V20h-4v-6c0-1.8-.6-3-2.3-3-1.4 0-2.2 1-2.5 1.9-.1.3-.2.7-.2 1.2V20h-4V8z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter / X" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-mint hover:text-ink grid place-items-center transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6 6-6z"/></svg>
+            </a>
+            <a href="#" aria-label="GitHub" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-mint hover:text-ink grid place-items-center transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 00.5 12a11.5 11.5 0 007.86 10.93c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.53-1.35-1.3-1.71-1.3-1.71-1.05-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.74-1.56-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.48.11-3.08 0 0 .98-.31 3.2 1.18a11 11 0 015.82 0c2.22-1.5 3.2-1.18 3.2-1.18.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0023.5 12 11.5 11.5 0 0012 .5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2">
+          <div class="text-white font-display font-semibold text-sm uppercase tracking-wider">Services</div>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li><a href="services.html" class="hover:text-white transition-colors">AI &amp; ML</a></li>
+            <li><a href="services.html" class="hover:text-white transition-colors">Data Analytics</a></li>
+            <li><a href="services.html" class="hover:text-white transition-colors">Cloud Computing</a></li>
+            <li><a href="services.html" class="hover:text-white transition-colors">Cyber Security</a></li>
+            <li><a href="services.html" class="hover:text-white transition-colors">Automation</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-2">
+          <div class="text-white font-display font-semibold text-sm uppercase tracking-wider">Company</div>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li><a href="about.html" class="hover:text-white transition-colors">About us</a></li>
+            <li><a href="services.html#process" class="hover:text-white transition-colors">Our process</a></li>
+            <li><a href="services.html#industries" class="hover:text-white transition-colors">Industries</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3">
+          <div class="text-white font-display font-semibold text-sm uppercase tracking-wider">Industry briefings</div>
+          <p class="mt-4 text-sm">Quarterly intelligence briefings on enterprise AI — delivered to your inbox. Unsubscribe at any time.</p>
+          <form class="mt-4 flex gap-2" onsubmit="event.preventDefault()">
+            <input type="email" required placeholder="you@company.com"
+              class="flex-1 min-w-0 rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-mint/60 focus:ring-2 focus:ring-mint/20"/>
+            <button class="btn btn-primary px-3 py-2 rounded-lg text-sm">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
+        <div>© 2026 SVC Tech AI Solutions Private Limited. All rights reserved.</div>
+        <div class="flex items-center gap-5">
+          <a href="#" class="hover:text-white transition-colors">Privacy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms</a>
+          <a href="#" class="hover:text-white transition-colors">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

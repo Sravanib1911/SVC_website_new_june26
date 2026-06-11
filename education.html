@@ -1,0 +1,1127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SVC Academy — Education &amp; Paid Internships</title>
+  <meta name="description" content="SVC Academy: structured cohort programmes in Data Science and Web Development — taught by senior practitioners and culminating in a paid internship at SVC Tech AI Solutions Private Limited." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display: ['Montserrat','system-ui','sans-serif'], sans: ['Inter','system-ui','sans-serif'] },
+        colors: { ink:'#0A1430', navy:'#0B3291', royal:'#1D4EA2', ocean:'#4196A2', mint:'#43E3C2', sky:'#71D6FC', mist:'#D4C2F2', cloud:'#F5F7FB' },
+        boxShadow: {
+          'soft':'0 1px 2px rgba(11,50,145,.06), 0 8px 24px rgba(11,50,145,.08)',
+          'lift':'0 4px 12px rgba(11,50,145,.08), 0 24px 48px -12px rgba(29,78,162,.18)',
+        },
+        letterSpacing: { tightest: '-0.035em' }
+      }}
+    }
+  </script>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/site.js" defer></script>
+
+  <!-- Premium motion · scoped to education page -->
+  <style>
+    /* Drifting hero orbs */
+    .orb { position:absolute; border-radius:9999px; filter:blur(70px); pointer-events:none; will-change:transform; }
+    .orb-a { width:520px; height:520px; top:-160px; left:-120px;
+      background: radial-gradient(circle, rgba(113,214,252,.50), rgba(113,214,252,0) 70%);
+      animation: orbA 24s ease-in-out infinite alternate; }
+    .orb-b { width:460px; height:460px; top:60px; right:-160px;
+      background: radial-gradient(circle, rgba(67,227,194,.40), rgba(67,227,194,0) 70%);
+      animation: orbB 28s ease-in-out infinite alternate; }
+    @keyframes orbA { 0% { transform: translate3d(0,0,0) scale(1); } 100% { transform: translate3d(60px,-30px,0) scale(1.1); } }
+    @keyframes orbB { 0% { transform: translate3d(0,0,0) scale(1); } 100% { transform: translate3d(-50px,40px,0) scale(1.08); } }
+
+    /* Headline word reveal */
+    .word { display:inline-block; opacity:0; transform: translateY(22px); filter: blur(6px);
+      animation: wordIn .9s cubic-bezier(.16,.84,.44,1) forwards; }
+    @keyframes wordIn { to { opacity:1; transform:none; filter:none; } }
+
+    /* =========================================================
+       CURRICULUM CASCADE  ·  Education hero right side
+       3D auto-cycling card stack across two tracks +
+       shimmering Paid Internship certificate.
+       ========================================================= */
+    .edu-stage-wrap {
+      position: relative;
+      display:flex; flex-direction:column; align-items:center; gap: 14px;
+      perspective: 1300px;
+    }
+    .edu-stage {
+      position: relative;
+      width: 100%; max-width: 500px;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      isolation: isolate;
+      transform-style: preserve-3d;
+      transform: rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg));
+      transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    }
+
+    /* Halo backdrop */
+    .edu-halo {
+      position:absolute; inset:-10%;
+      background:
+        radial-gradient(40% 40% at 50% 45%, rgba(67,227,194,.30), transparent 70%),
+        radial-gradient(55% 55% at 28% 28%, rgba(113,214,252,.26), transparent 70%),
+        radial-gradient(55% 55% at 72% 75%, rgba(212,194,242,.22), transparent 70%);
+      filter: blur(28px);
+      animation: haloBreathe 7s ease-in-out infinite;
+      z-index:0;
+    }
+    @keyframes haloBreathe {
+      0%,100% { transform: scale(1);    opacity:.85; }
+      50%     { transform: scale(1.08); opacity:1;   }
+    }
+
+    /* Faint blueprint dotted grid */
+    .edu-grid {
+      position:absolute; inset:6%; border-radius: 28px;
+      background-image: radial-gradient(rgba(29,78,162,.15) 1px, transparent 1.5px);
+      background-size: 22px 22px;
+      -webkit-mask: radial-gradient(ellipse at center, black 30%, transparent 80%);
+              mask: radial-gradient(ellipse at center, black 30%, transparent 80%);
+      z-index:0;
+    }
+
+    /* Floating academic symbols */
+    .edu-sym {
+      position:absolute; font-family: 'Montserrat', system-ui, sans-serif;
+      font-weight: 700;
+      color: rgba(29,78,162,.16);
+      pointer-events:none;
+      z-index:0;
+      animation: symFloat 9s ease-in-out infinite;
+      filter: blur(.2px);
+      text-shadow: 0 2px 8px rgba(67,227,194,.15);
+    }
+    @keyframes symFloat {
+      0%,100% { transform: translateY(0) rotate(0); }
+      50%     { transform: translateY(-12px) rotate(4deg); }
+    }
+    .edu-sym.s1 { top: 9%;  left: 7%;  font-size: 26px; animation-delay:.0s; }
+    .edu-sym.s2 { top: 14%; right: 10%; font-size: 22px; animation-delay:.7s; color: rgba(67,227,194,.30); }
+    .edu-sym.s3 { top: 46%; right: 4%;  font-size: 28px; animation-delay:1.4s; }
+    .edu-sym.s4 { bottom: 22%; left: 5%; font-size: 24px; animation-delay:2.1s; color: rgba(113,214,252,.42); }
+    .edu-sym.s5 { top: 32%; left: 4%;  font-size: 18px; animation-delay:2.8s; }
+    .edu-sym.s6 { bottom: 32%; right: 7%; font-size: 20px; animation-delay:3.5s; color: rgba(212,194,242,.55); }
+
+    /* Sparkle particles */
+    .edu-sparkle {
+      position:absolute; width:3px; height:3px; border-radius:50%;
+      background: radial-gradient(circle, #ffffff, rgba(67,227,194,.7) 55%, transparent 70%);
+      box-shadow: 0 0 6px rgba(113,214,252,.6);
+      animation: twinkle 3.6s ease-in-out infinite;
+      opacity:0; z-index:2;
+    }
+    @keyframes twinkle {
+      0%,100% { opacity:0; transform: scale(.4); }
+      50%     { opacity:1; transform: scale(1.2); }
+    }
+
+    /* Track tabs at top */
+    .edu-tabs {
+      position:absolute; top:16px; left:50%;
+      transform: translateX(-50%);
+      display:inline-flex; gap:4px;
+      padding:5px;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(11,50,145,.08);
+      border-radius: 9999px;
+      box-shadow: 0 6px 18px -10px rgba(29,78,162,.3);
+      z-index: 5;
+    }
+    .edu-tab {
+      position: relative;
+      font: 700 10.5px/1 Inter, system-ui, sans-serif;
+      letter-spacing: .06em;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      color: rgba(10,20,48,.55);
+      cursor: pointer;
+      transition: color .3s ease;
+      background: transparent;
+      border: 0;
+      z-index: 1;
+    }
+    .edu-tab.is-active { color: #0A1430; }
+    .edu-tab-pill {
+      position: absolute;
+      top: 5px; bottom: 5px;
+      left: var(--pill-x, 5px);
+      width: var(--pill-w, 0);
+      background: linear-gradient(135deg, #43E3C2 0%, #71D6FC 100%);
+      border-radius: 9999px;
+      box-shadow: 0 4px 12px -4px rgba(67,227,194,.55);
+      transition: left .45s cubic-bezier(.4,0,.2,1), width .45s cubic-bezier(.4,0,.2,1);
+      z-index: 0;
+    }
+
+    /* 3D card cascade area */
+    .edu-cards {
+      position:absolute;
+      top: 82px; bottom: 96px;
+      left: 11%; right: 14%;
+      perspective: 900px;
+      transform-style: preserve-3d;
+      z-index: 3;
+    }
+    .edu-card {
+      position:absolute; inset: 0;
+      display:flex; flex-direction:column;
+      padding: 18px 18px 16px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.98) 0%, rgba(246,250,255,.94) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(11,50,145,.08);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,.95) inset,
+        0 20px 44px -20px rgba(29,78,162,.35),
+        0 30px 70px -28px rgba(67,227,194,.4);
+      transform-style: preserve-3d;
+      opacity: 0; pointer-events: none;
+      transition: transform .75s cubic-bezier(.4,0,.2,1), opacity .65s ease;
+      transform: translate3d(0, 0, -200px) scale(.8);
+      will-change: transform, opacity;
+    }
+    .edu-card.s-active {
+      opacity:1; pointer-events:auto;
+      transform: translate3d(0, 0, 0) rotateZ(0) scale(1);
+      z-index: 5;
+    }
+    .edu-card.s-next {
+      opacity:.55;
+      transform: translate3d(22px, 22px, -90px) rotateZ(3deg) scale(.93);
+      z-index: 4;
+    }
+    .edu-card.s-after {
+      opacity:.28;
+      transform: translate3d(40px, 40px, -170px) rotateZ(5.5deg) scale(.85);
+      z-index: 3;
+    }
+    .edu-card.s-prev {
+      opacity:0;
+      transform: translate3d(-40px, -30px, 80px) rotateZ(-4deg) scale(1.06);
+      z-index: 2;
+    }
+    .edu-card.s-hidden {
+      opacity:0;
+      transform: translate3d(0, 0, -260px) scale(.7);
+      z-index: 1;
+    }
+
+    /* Card content */
+    .card-row {
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .card-num {
+      font: 700 10.5px/1 Inter, system-ui, sans-serif;
+      letter-spacing: .26em;
+      color: #43A395;
+      text-transform: uppercase;
+    }
+    .card-pill {
+      font: 700 8.5px/1 Inter, system-ui, sans-serif;
+      letter-spacing: .18em; text-transform: uppercase;
+      padding: 4px 8px; border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(67,227,194,.18), rgba(113,214,252,.20));
+      color: #1D4EA2;
+      border: 1px solid rgba(29,78,162,.08);
+    }
+    .card-pill.web {
+      background: linear-gradient(135deg, rgba(212,194,242,.30), rgba(113,214,252,.22));
+      color: #5840A0;
+    }
+    .card-icon {
+      width: 58px; height: 58px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(67,227,194,.20), rgba(113,214,252,.24));
+      display: grid; place-items: center;
+      color: #1D4EA2;
+      margin-top: 14px;
+      box-shadow:
+        inset 0 0 0 1px rgba(29,78,162,.08),
+        0 6px 14px -8px rgba(29,78,162,.25);
+    }
+    .card-icon svg { width: 30px; height: 30px; }
+    .card-title {
+      font: 800 22px/1.15 Montserrat, system-ui, sans-serif;
+      letter-spacing: -0.02em;
+      color: #0A1430;
+      margin-top: 14px;
+    }
+    .card-sub {
+      font: 500 13px/1.5 Inter, system-ui, sans-serif;
+      color: rgba(10,20,48,.65);
+      margin-top: 4px;
+    }
+    .card-meta {
+      margin-top: auto;
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 8px;
+    }
+    .card-progress {
+      flex: 1;
+      height: 4px; border-radius: 2px;
+      background: rgba(29,78,162,.10);
+      overflow: hidden;
+      position: relative;
+    }
+    .card-progress::after {
+      content:''; position:absolute; left:0; top:0; bottom:0;
+      width: var(--pw, 30%);
+      background: linear-gradient(90deg, #43E3C2, #71D6FC);
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+    .card-week {
+      font: 600 10.5px/1 Inter, system-ui, sans-serif;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(10,20,48,.55);
+    }
+
+    /* Right progress rail */
+    .edu-rail {
+      position: absolute;
+      top: 50%; right: 4px;
+      transform: translateY(-50%);
+      display:flex; flex-direction:column; gap: 7px;
+      z-index: 4;
+    }
+    .rail-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(29,78,162,.20);
+      transition: width .45s ease, height .45s ease, background .45s ease, box-shadow .45s ease;
+    }
+    .rail-dot.is-active {
+      width: 22px; height: 6px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #43E3C2, #71D6FC);
+      box-shadow: 0 0 0 3px rgba(67,227,194,.18), 0 0 10px rgba(67,227,194,.45);
+    }
+
+    /* Internship certificate badge */
+    .internship-badge {
+      position: absolute;
+      bottom: 16px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 18px 11px 12px;
+      border-radius: 14px;
+      background:
+        radial-gradient(80% 100% at 0% 50%, rgba(67,227,194,.25), transparent 70%),
+        linear-gradient(135deg, #0B1A45 0%, #0E2466 60%, #0B3291 100%);
+      border: 1px solid rgba(67,227,194,.40);
+      box-shadow:
+        0 0 0 1px rgba(67,227,194,.18) inset,
+        0 14px 30px -10px rgba(11,26,69,.55),
+        0 0 36px -10px rgba(67,227,194,.55);
+      color: #fff;
+      z-index: 6;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .internship-badge::before {
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(115deg,
+        transparent 30%,
+        rgba(67,227,194,.35) 45%,
+        rgba(255,255,255,.65) 50%,
+        rgba(67,227,194,.35) 55%,
+        transparent 70%);
+      transform: translateX(-100%);
+      animation: shineSweep 3.6s ease-in-out infinite;
+      z-index: 0;
+    }
+    @keyframes shineSweep {
+      0%   { transform: translateX(-110%); }
+      55%  { transform: translateX(110%);  }
+      100% { transform: translateX(110%);  }
+    }
+    .internship-badge > * { position: relative; z-index: 1; }
+    .ib-medal {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #43E3C2, #71D6FC);
+      display:grid; place-items:center;
+      color: #0A1430;
+      box-shadow: 0 6px 16px -6px rgba(67,227,194,.6);
+      flex-shrink: 0;
+    }
+    .ib-medal svg { width: 22px; height: 22px; }
+    .ib-text { line-height: 1.15; }
+    .ib-label {
+      font: 800 12px/1 Montserrat, system-ui, sans-serif;
+      letter-spacing: .16em; text-transform: uppercase;
+      background: linear-gradient(135deg, #43E3C2, #71D6FC);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .ib-sub {
+      font: 500 10px/1 Inter, system-ui, sans-serif;
+      color: rgba(255,255,255,.78);
+      margin-top: 4px;
+      letter-spacing: .04em;
+    }
+    .ib-sub b { color:#43E3C2; font-weight:700; }
+
+    /* Status caption below stage */
+    .edu-caption {
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 14px; border-radius:9999px;
+      background: rgba(255,255,255,.7);
+      border:1px solid rgba(11,50,145,.08);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 18px -10px rgba(29,78,162,.35);
+      font: 500 12px/1 Inter, system-ui, sans-serif;
+      color:#0A1430;
+    }
+    .live-dot {
+      width:7px; height:7px; border-radius:50%; background:#43E3C2;
+      box-shadow: 0 0 0 4px rgba(67,227,194,.18);
+      animation: livePulse 1.6s ease-in-out infinite;
+    }
+    @keyframes livePulse {
+      0%,100% { box-shadow: 0 0 0 4px rgba(67,227,194,.18); }
+      50%     { box-shadow: 0 0 0 8px rgba(67,227,194,.05); }
+    }
+
+    @media (max-width: 1024px) {
+      .edu-stage { max-width: 400px; }
+      .edu-cards { top: 76px; bottom: 88px; left: 8%; right: 12%; }
+      .card-title { font-size: 19px; }
+      .card-icon { width: 50px; height: 50px; }
+    }
+
+    /* Reduced motion respect */
+    @media (prefers-reduced-motion: reduce) {
+      .orb, .word, .edu-halo, .edu-sym, .edu-sparkle,
+      .edu-card, .rail-dot, .internship-badge::before, .live-dot
+      { animation: none !important; transition: none !important; opacity:1 !important; transform:none !important; filter:none !important; }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen">
+
+  <!-- NAV -->
+  <header class="fixed top-0 inset-x-0 z-50 nav-blur bg-white/70 border-b border-black/5">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <img src="band_assets/logo-icon.png" alt="SVC Tech AI Solutions" class="h-8 w-auto object-contain"/>
+        <div class="leading-tight">
+          <div class="font-display font-bold text-[15px] text-ink tracking-tight">SVC Tech AI</div>
+          <div class="text-[10px] uppercase tracking-[0.18em] text-ink/55">Solutions Pvt. Ltd.</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-9 text-[14px] font-medium text-ink/75">
+        <a href="products.html"  class="hover:text-ink transition-colors">Products</a>
+        <a href="services.html"  class="hover:text-ink transition-colors">Services</a>
+        <a href="education.html" class="nav-active">Education</a>
+        <a href="about.html"     class="hover:text-ink transition-colors">About</a>
+        <a href="contact.html"   class="hover:text-ink transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="contact.html" class="hidden sm:inline-flex btn btn-outline text-sm px-4 py-2 rounded-lg">Contact Us</a>
+        <a href="contact.html" class="btn btn-primary text-sm px-4 py-2 rounded-lg">
+          Get Started
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-black/10 text-ink/80 hover:bg-black/5 transition-colors">
+          <svg id="navIconOpen" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg id="navIconClose" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <nav id="mobileNav" class="lg:hidden hidden border-t border-black/5 bg-white/95 nav-blur">
+      <div class="max-w-7xl mx-auto px-5 py-3 flex flex-col text-[15px] font-medium text-ink/80">
+        <a href="products.html"  class="py-3 border-b border-black/5 hover:text-ink transition-colors">Products</a>
+        <a href="services.html"  class="py-3 border-b border-black/5 hover:text-ink transition-colors">Services</a>
+        <a href="education.html" class="py-3 border-b border-black/5 text-navy">Education</a>
+        <a href="about.html"     class="py-3 border-b border-black/5 hover:text-ink transition-colors">About</a>
+        <a href="contact.html"   class="py-3 border-b border-black/5 hover:text-ink transition-colors">Contact</a>
+        <a href="contact.html"   class="btn btn-primary justify-center mt-4 mb-1 px-5 py-3 rounded-xl">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 page-hero overflow-hidden">
+    <!-- Drifting orbs -->
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+
+    <div class="absolute inset-0 light-grid pointer-events-none"></div>
+    <div class="relative max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <span class="chip word" style="animation-delay:0ms"><span class="w-1.5 h-1.5 rounded-full bg-mint pulse-dot"></span> SVC Academy</span>
+        <h1 class="mt-5 font-display font-bold text-[36px] sm:text-[46px] lg:text-[56px] leading-[1.06] tracking-tightest text-ink">
+          <span class="word" style="animation-delay:80ms">Learn</span>
+          <span class="word" style="animation-delay:160ms">to</span>
+          <span class="word text-gradient" style="animation-delay:240ms">build&nbsp;with&nbsp;AI</span><span class="word" style="animation-delay:320ms">,</span><br/>
+          <span class="word" style="animation-delay:400ms">not</span>
+          <span class="word" style="animation-delay:480ms">just</span>
+          <span class="word" style="animation-delay:560ms">talk</span>
+          <span class="word" style="animation-delay:640ms">about</span>
+          <span class="word" style="animation-delay:720ms">it.</span>
+        </h1>
+        <p class="mt-5 max-w-2xl text-[17px] leading-[1.7] text-ink/65 word" style="animation-delay:820ms">
+          Structured cohort programmes across Data Science and Web Development — delivered by senior
+          practitioners who ship to production every week. Graduates progress directly into a
+          <b class="text-ink">paid internship</b> with SVC.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3 word" style="animation-delay:920ms">
+          <a href="#tracks" class="btn btn-primary px-5 py-3 rounded-xl">Browse tracks
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="contact.html" class="btn btn-outline px-5 py-3 rounded-xl">LMS</a>
+        </div>
+
+        <!-- Inline stat strip -->
+        <div class="mt-7 flex flex-wrap items-center gap-x-7 gap-y-3 word" style="animation-delay:1020ms">
+          <div class="flex items-baseline gap-2">
+            <span class="font-display font-bold text-ink text-xl">13</span>
+            <span class="text-xs text-ink/55 uppercase tracking-[0.16em]">Modules</span>
+          </div>
+          <span class="hidden sm:block w-px h-5 bg-ink/10"></span>
+          <div class="flex items-baseline gap-2">
+            <span class="font-display font-bold text-ink text-xl">2</span>
+            <span class="text-xs text-ink/55 uppercase tracking-[0.16em]">Tracks</span>
+          </div>
+          <span class="hidden sm:block w-px h-5 bg-ink/10"></span>
+          <div class="flex items-baseline gap-2">
+            <span class="font-display font-bold text-ink text-xl">Paid</span>
+            <span class="text-xs text-ink/55 uppercase tracking-[0.16em]">Internship · Stipend</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CURRICULUM CASCADE · right side -->
+      <div class="lg:col-span-5 word" style="animation-delay:1120ms">
+        <div class="edu-stage-wrap" aria-label="SVC Academy curriculum showcase">
+          <div class="edu-stage" id="eduStage">
+            <div class="edu-halo"></div>
+            <div class="edu-grid"></div>
+
+            <!-- Floating academic symbols -->
+            <span class="edu-sym s1">π</span>
+            <span class="edu-sym s2">Σ</span>
+            <span class="edu-sym s3">∫</span>
+            <span class="edu-sym s4">{ }</span>
+            <span class="edu-sym s5">μ</span>
+            <span class="edu-sym s6">&lt;/&gt;</span>
+
+            <!-- Sparkles -->
+            <span class="edu-sparkle" style="top:12%; left:24%; animation-delay:.0s"></span>
+            <span class="edu-sparkle" style="top:30%; left:88%; animation-delay:.7s"></span>
+            <span class="edu-sparkle" style="top:62%; left:14%; animation-delay:1.4s"></span>
+            <span class="edu-sparkle" style="top:74%; left:82%; animation-delay:2.0s"></span>
+            <span class="edu-sparkle" style="top:88%; left:40%; animation-delay:2.6s"></span>
+
+            <!-- Track tabs -->
+            <div class="edu-tabs" role="tablist">
+              <span class="edu-tab-pill"></span>
+              <button class="edu-tab is-active" data-track="ds"  type="button">Data Science · 9</button>
+              <button class="edu-tab"           data-track="web" type="button">Web Dev · 4</button>
+            </div>
+
+            <!-- 3D card cascade · 13 cards: 9 Data Science + 4 Web Dev -->
+            <div class="edu-cards" id="eduCards">
+
+              <!-- DATA SCIENCE TRACK -->
+              <div class="edu-card" data-track="ds" data-i="0">
+                <div class="card-row"><span class="card-num">Module 01 · 09</span><span class="card-pill">Data Science</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M8 4h8M8 20h8M6 4v6a3 3 0 003 3h6a3 3 0 003-3V4M6 20v-6a3 3 0 013-3h6a3 3 0 013 3v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+                <div class="card-title">Python</div>
+                <div class="card-sub">Foundations — syntax, data structures &amp; the workflow you'll use forever.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:14%"></div><div class="card-week">Wk 1–2</div></div>
+              </div>
+
+              <div class="edu-card" data-track="ds" data-i="1">
+                <div class="card-row"><span class="card-num">Module 02 · 09</span><span class="card-pill">Data Science</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M16.9 16.9l2.1 2.1M4.9 19.1l2.1-2.1M16.9 7.1l2.1-2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+                <div class="card-title">Advanced Python</div>
+                <div class="card-sub">OOP, async, decorators &amp; production patterns the pros actually use.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:24%"></div><div class="card-week">Wk 3</div></div>
+              </div>
+
+              <div class="edu-card" data-track="ds" data-i="2">
+                <div class="card-row"><span class="card-num">Module 03 · 09</span><span class="card-pill">Data Science</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+                <div class="card-title">SQL &amp; Power BI</div>
+                <div class="card-sub">Query like an analyst. Model. Visualize. Tell stories with data.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:34%"></div><div class="card-week">Wk 4–5</div></div>
+              </div>
+
+              <div class="edu-card" data-track="ds" data-i="3">
+                <div class="card-row"><span class="card-num">Module 04 · 09</span><span class="card-pill">Data Science</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a4 4 0 014 4v12a4 4 0 01-8 0V6a4 4 0 014-4z" stroke="currentColor" stroke-width="1.6"/><path d="M8 9h8M8 13h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                <div class="card-title">Machine Learning</div>
+                <div class="card-sub">Classification, regression, ensembles — models you can ship, not just plot.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:44%"></div><div class="card-week">Wk 6–7</div></div>
+              </div>
+
+              <div class="edu-card" data-track="ds" data-i="4">
+                <div class="card-row"><span class="card-num">Module 05 · 09</span><span class="card-pill">Data Science</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="6" r="1.6" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="12" r="1.6" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="18" r="1.6" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="6" r="1.6" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="1.6" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="18" r="1.6" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="12" r="1.6" stroke="currentColor" stroke-width="1.5"/><path d="M6.6 6L10.5 11M6.6 12h3.8M6.6 18l3.9-5M13.6 6l3.8 5M13.6 12h3.8M13.6 18l3.9-5" stroke="currentColor" stroke-width="1.2"/></svg></div>
+                <div class="card-title">Deep Learning</div>
+                <div class="card-sub">Neural networks end-to-end — CNNs, RNNs, transformers, real training.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:54%"></div><div class="card-week">Wk 8–9</div></div>
+              </div>
+
+              <div class="edu-card" data-track="ds" data-i="5">
+                <div class="card-row"><span class="card-num">Module 06 · 09</span><span class="card-pill">Data Science</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 12c0 4-4 7-9 7-1.6 0-3.1-.3-4.3-.8L3 20l1.4-3.7C3.5 15 3 13.6 3 12c0-4 4-7 9-7s9 3 9 7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 11h.01M12 11h.01M16 11h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                <div class="card-title">NLP</div>
+                <div class="card-sub">Language understanding — embeddings, sequence models, real chat systems.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:64%"></div><div class="card-week">Wk 10</div></div>
+              </div>
+
+              <div class="edu-card" data-track="ds" data-i="6">
+                <div class="card-row"><span class="card-num">Module 07 · 09</span><span class="card-pill">Data Science</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 20c2 0 3-2 3-4s1-4 3-4 3 2 3 4-1 4 1 4 3-2 3-4 1-4 3-4 3 2 3 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="6" cy="9" r="1" fill="currentColor"/><circle cx="12" cy="6" r="1" fill="currentColor"/><circle cx="18" cy="9" r="1" fill="currentColor"/></svg></div>
+                <div class="card-title">Probability &amp; Stats</div>
+                <div class="card-sub">The math that powers ML — distributions, inference, hypothesis testing.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:74%"></div><div class="card-week">Wk 11</div></div>
+              </div>
+
+              <div class="edu-card" data-track="ds" data-i="7">
+                <div class="card-row"><span class="card-num">Module 08 · 09</span><span class="card-pill">Data Science</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l1.8 5.4L19 9l-5.2 1.6L12 16l-1.8-5.4L5 9l5.2-1.6L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="currentColor" fill-opacity=".12"/><path d="M19 17l.7 2.1L22 20l-2.3.9L19 23l-.7-2.1L16 20l2.3-.9L19 17z" fill="currentColor"/></svg></div>
+                <div class="card-title">Generative AI</div>
+                <div class="card-sub">LLMs, diffusion, prompting — build with frontier models, the right way.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:84%"></div><div class="card-week">Wk 12</div></div>
+              </div>
+
+              <div class="edu-card" data-track="ds" data-i="8">
+                <div class="card-row"><span class="card-num">Module 09 · 09</span><span class="card-pill">Data Science</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="8" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M12 8V4M9 4h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="9" cy="13" r="1" fill="currentColor"/><circle cx="15" cy="13" r="1" fill="currentColor"/><path d="M2 14v-2M22 14v-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+                <div class="card-title">Agentic AI</div>
+                <div class="card-sub">Autonomous workflows — tools, memory, planning &amp; multi-agent systems.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:96%"></div><div class="card-week">Wk 13</div></div>
+              </div>
+
+              <!-- WEB DEVELOPMENT TRACK -->
+              <div class="edu-card" data-track="web" data-i="0">
+                <div class="card-row"><span class="card-num">Module 01 · 04</span><span class="card-pill web">Web Dev</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="18" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/><circle cx="6.5" cy="7" r="1" fill="currentColor"/><circle cx="6.5" cy="17" r="1" fill="currentColor"/></svg></div>
+                <div class="card-title">Python Full-Stack</div>
+                <div class="card-sub">Django + REST + React + Postgres — ship complete, modern web apps.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:25%"></div><div class="card-week">Wk 1–4</div></div>
+              </div>
+
+              <div class="edu-card" data-track="web" data-i="1">
+                <div class="card-row"><span class="card-num">Module 02 · 04</span><span class="card-pill web">Web Dev</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17a4 4 0 110-8 5 5 0 019.6-1.4A4.5 4.5 0 0118 17H7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+                <div class="card-title">Salesforce</div>
+                <div class="card-sub">Admin → Developer → Architect path. Apex, LWC and real CRM builds.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:50%"></div><div class="card-week">Wk 5–8</div></div>
+              </div>
+
+              <div class="edu-card" data-track="web" data-i="2">
+                <div class="card-row"><span class="card-num">Module 03 · 04</span><span class="card-pill web">Web Dev</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M8 4l-4 4 4 4M16 12l4 4-4 4M14 4l-4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="card-title">.NET</div>
+                <div class="card-sub">C# + ASP.NET Core + EF — enterprise-grade APIs and services.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:75%"></div><div class="card-week">Wk 9–12</div></div>
+              </div>
+
+              <div class="edu-card" data-track="web" data-i="3">
+                <div class="card-row"><span class="card-num">Module 04 · 04</span><span class="card-pill web">Web Dev</span></div>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="7" ry="3" stroke="currentColor" stroke-width="1.6"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" stroke="currentColor" stroke-width="1.6"/></svg></div>
+                <div class="card-title">SAP</div>
+                <div class="card-sub">ERP fundamentals — modules, business processes &amp; the SAP S/4HANA stack.</div>
+                <div class="card-meta"><div class="card-progress" style="--pw:96%"></div><div class="card-week">Wk 13–16</div></div>
+              </div>
+
+            </div>
+
+            <!-- Right progress rail (rendered by JS based on active track) -->
+            <div class="edu-rail" id="eduRail"></div>
+
+            <!-- Internship certificate badge -->
+            <div class="internship-badge">
+              <div class="ib-medal">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4 7.2 16.9l.9-5.4-3.9-3.8 5.4-.8L12 2z" fill="currentColor"/>
+                  <path d="M8 16l-2 5 3-1.5L11 21l1-4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                  <path d="M16 16l2 5-3-1.5L13 21l-1-4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="ib-text">
+                <div class="ib-label">Paid Internship</div>
+                <div class="ib-sub"><b>Stipend included</b> · awarded on course completion</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="edu-caption">
+            <span class="live-dot"></span>
+            <span><b style="font-weight:700">Cohort in session</b> · Auto-cycling curriculum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKS -->
+  <section id="tracks" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl">
+        <span class="chip">Programmes</span>
+        <h2 class="mt-5 font-display font-bold text-[32px] lg:text-[44px] leading-[1.1] tracking-tightest text-ink [text-wrap:balance]">
+          Four career tracks. <span class="text-gradient">One destination.</span>
+        </h2>
+        <p class="mt-4 text-ink/65 text-[16px] leading-[1.7]">
+          Choose Data Science, Web Development, Salesforce or SAP. Every programme concludes with a
+          portfolio capstone and a structured paid internship at SVC Tech AI Solutions Private Limited.
+        </p>
+      </div>
+
+      <div class="mt-12 grid lg:grid-cols-2 gap-5">
+
+        <!-- DATA SCIENCE TRACK -->
+        <article class="card p-7 ring-2 ring-mint/40">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] uppercase tracking-[0.18em] text-mint font-semibold">Track 01 · Flagship</span>
+            <span class="text-[11px] text-ink/45">13 weeks · 9 modules</span>
+          </div>
+          <h3 class="mt-4 font-display font-bold text-2xl text-ink">Data Science</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">A complete progression from programming foundations through frontier Agentic AI — built for graduates entering data, ML and AI engineering careers.</p>
+          <ul class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-y-1.5 gap-x-4 text-[13px] text-ink/65">
+            <li class="flex gap-2"><span class="text-mint">·</span> Python</li>
+            <li class="flex gap-2"><span class="text-mint">·</span> Advanced Python</li>
+            <li class="flex gap-2"><span class="text-mint">·</span> SQL &amp; Power BI</li>
+            <li class="flex gap-2"><span class="text-mint">·</span> Machine Learning</li>
+            <li class="flex gap-2"><span class="text-mint">·</span> Deep Learning</li>
+            <li class="flex gap-2"><span class="text-mint">·</span> Natural Language Processing</li>
+            <li class="flex gap-2"><span class="text-mint">·</span> Probability &amp; Statistics</li>
+            <li class="flex gap-2"><span class="text-mint">·</span> Generative AI</li>
+            <li class="flex gap-2"><span class="text-mint">·</span> Agentic AI</li>
+          </ul>
+          <div class="mt-6 flex items-center justify-between text-[13px] pt-5 border-t border-black/5">
+            <span class="text-ink/55">Cohort · Live sessions · Capstone</span>
+            <span class="font-semibold text-mint">Paid internship on completion</span>
+          </div>
+        </article>
+
+        <!-- WEB DEVELOPMENT TRACK -->
+        <article class="card p-7">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] uppercase tracking-[0.18em] text-royal font-semibold">Track 02</span>
+            <span class="text-[11px] text-ink/45">16 weeks · 4 modules</span>
+          </div>
+          <h3 class="mt-4 font-display font-bold text-2xl text-ink">Web Development</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">A modern full-stack engineering programme — from responsive front-ends to production-grade APIs and services built with Python and .NET.</p>
+          <ul class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-y-1.5 gap-x-4 text-[13px] text-ink/65">
+            <li class="flex gap-2"><span class="text-royal">·</span> HTML, CSS &amp; JavaScript</li>
+            <li class="flex gap-2"><span class="text-royal">·</span> React &amp; REST APIs</li>
+            <li class="flex gap-2"><span class="text-royal">·</span> Python Full-Stack</li>
+            <li class="flex gap-2"><span class="text-royal">·</span> .NET</li>
+          </ul>
+          <div class="mt-6 flex items-center justify-between text-[13px] pt-5 border-t border-black/5">
+            <span class="text-ink/55">Cohort · Live sessions · Capstone</span>
+            <span class="font-semibold text-royal">Paid internship on completion</span>
+          </div>
+        </article>
+
+        <!-- SALESFORCE TRACK -->
+        <article class="card p-7">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] uppercase tracking-[0.18em] text-ocean font-semibold">Track 03</span>
+            <span class="text-[11px] text-ink/45">12 weeks · 4 modules</span>
+          </div>
+          <h3 class="mt-4 font-display font-bold text-2xl text-ink">Salesforce</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">A focused CRM-platform programme on the Admin → Developer → Architect path — Apex, Lightning Web Components and real CRM builds.</p>
+          <ul class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-y-1.5 gap-x-4 text-[13px] text-ink/65">
+            <li class="flex gap-2"><span class="text-ocean">·</span> Salesforce Admin</li>
+            <li class="flex gap-2"><span class="text-ocean">·</span> Apex &amp; Triggers</li>
+            <li class="flex gap-2"><span class="text-ocean">·</span> Lightning Web Components</li>
+            <li class="flex gap-2"><span class="text-ocean">·</span> Integration &amp; Deployment</li>
+          </ul>
+          <div class="mt-6 flex items-center justify-between text-[13px] pt-5 border-t border-black/5">
+            <span class="text-ink/55">Cohort · Live sessions · Capstone</span>
+            <span class="font-semibold text-ocean">Paid internship on completion</span>
+          </div>
+        </article>
+
+        <!-- SAP TRACK -->
+        <article class="card p-7">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] uppercase tracking-[0.18em] text-royal font-semibold">Track 04</span>
+            <span class="text-[11px] text-ink/45">12 weeks · 4 modules</span>
+          </div>
+          <h3 class="mt-4 font-display font-bold text-2xl text-ink">SAP</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Enterprise SAP training across core modules and S/4HANA — configuration, ABAP fundamentals and real business-process implementation.</p>
+          <ul class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-y-1.5 gap-x-4 text-[13px] text-ink/65">
+            <li class="flex gap-2"><span class="text-royal">·</span> SAP Fundamentals</li>
+            <li class="flex gap-2"><span class="text-royal">·</span> S/4HANA</li>
+            <li class="flex gap-2"><span class="text-royal">·</span> ABAP Basics</li>
+            <li class="flex gap-2"><span class="text-royal">·</span> Business Process Config</li>
+          </ul>
+          <div class="mt-6 flex items-center justify-between text-[13px] pt-5 border-t border-black/5">
+            <span class="text-ink/55">Cohort · Live sessions · Capstone</span>
+            <span class="font-semibold text-royal">Paid internship on completion</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Internship banner -->
+      <div class="mt-8 rounded-2xl p-6 lg:p-7 bg-gradient-to-br from-navy to-royal text-white grid lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-8">
+          <div class="text-[11px] uppercase tracking-[0.20em] text-mint font-semibold">Paid internship · awarded on graduation</div>
+          <h3 class="mt-2 font-display font-bold text-2xl">Every graduate progresses into a paid internship at SVC.</h3>
+          <p class="mt-2 text-white/75 text-[15px] leading-[1.7] max-w-2xl">A structured pathway from cohort to production — earn a monthly stipend, ship real engagements alongside senior engineers, and build the portfolio that converts into your first full-time role.</p>
+        </div>
+        <div class="lg:col-span-4 lg:text-right">
+          <a href="contact.html" class="inline-flex btn btn-primary px-5 py-3 rounded-xl">Apply for admission
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section class="py-20 lg:py-24 bg-cloud">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl">
+        <span class="chip">Learning formats</span>
+        <h2 class="mt-5 font-display font-bold text-[32px] lg:text-[40px] leading-[1.1] tracking-tightest text-ink [text-wrap:balance]">
+          Three formats. <span class="text-gradient">Built for how you learn.</span>
+        </h2>
+        <p class="mt-4 text-ink/65 text-[16px] leading-[1.7]">
+          Everyone learns differently — so we deliver the same outcome-driven curriculum in the format
+          that fits your life. Join a structured live cohort, move at your own pace with full mentor
+          support, or roll out a managed learning platform for your team. Whichever you choose, the
+          content, projects and standards stay identical, and every path ends in real, portfolio-ready work.
+        </p>
+      </div>
+      <div class="mt-12 grid md:grid-cols-3 gap-5">
+        <div class="rounded-2xl bg-white border border-black/5 p-7">
+          <div class="icon-tile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3 19a6 6 0 0112 0M14 19a4 4 0 017-2.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="mt-5 font-display font-bold text-xl text-ink">Live cohort</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Twice-weekly instructor-led sessions with peers, weekly office hours and a moderated capstone showcase.</p>
+        </div>
+        <div class="rounded-2xl bg-white border border-black/5 p-7">
+          <div class="icon-tile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg>
+          </div>
+          <h3 class="mt-5 font-display font-bold text-xl text-ink">Self-paced</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">Recorded modules, graded laboratory assignments and an active learner community — designed for working professionals.</p>
+        </div>
+        <div class="rounded-2xl bg-white border border-black/5 p-7">
+          <div class="icon-tile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 21V7l9-4 9 4v14M9 21v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="mt-5 font-display font-bold text-xl text-ink">LMS</h3>
+          <p class="mt-2 text-ink/65 text-[15px] leading-[1.7]">A managed learning platform for your engineering and data teams — custom curricula, progress tracking and assessments against your own data and use cases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTRUCTORS -->
+  <section class="py-20 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="max-w-2xl">
+        <span class="chip">Faculty</span>
+        <h2 class="mt-5 font-display font-bold text-[32px] lg:text-[40px] leading-[1.1] tracking-tightest text-ink [text-wrap:balance]">
+          Taught by senior practitioners who <span class="text-gradient">ship to production</span>.
+        </h2>
+        <p class="mt-4 text-ink/65 text-[16px] leading-[1.7]">
+          Every instructor at SVC Academy is a working engineer with <b class="text-ink">5+ years of
+          hands-on experience</b> — they teach only the systems and disciplines they actively build for
+          enterprise clients.
+        </p>
+      </div>
+
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Data Science -->
+        <div class="card p-5">
+          <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-sky/40 to-mint/30 grid place-items-center">
+            <span class="text-6xl" role="img" aria-label="Data Science">📊</span>
+          </div>
+          <h3 class="mt-4 font-display font-semibold text-ink">Anika Rao</h3>
+          <p class="text-sm text-ink/55">Lead — Data Science &amp; AI</p>
+          <span class="mt-3 inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-cloud text-ink/60 border border-black/5">5+ yrs experience</span>
+        </div>
+        <!-- Full Stack -->
+        <div class="card p-5">
+          <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-mint/40 to-sky/30 grid place-items-center">
+            <span class="text-6xl" role="img" aria-label="Full-Stack Development">💻</span>
+          </div>
+          <h3 class="mt-4 font-display font-semibold text-ink">Karthik Menon</h3>
+          <p class="text-sm text-ink/55">Lead — Full-Stack Development</p>
+          <span class="mt-3 inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-cloud text-ink/60 border border-black/5">5+ yrs experience</span>
+        </div>
+        <!-- SAP -->
+        <div class="card p-5">
+          <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-royal/30 to-sky/30 grid place-items-center">
+            <span class="text-6xl" role="img" aria-label="SAP">🧩</span>
+          </div>
+          <h3 class="mt-4 font-display font-semibold text-ink">Sara Pillai</h3>
+          <p class="text-sm text-ink/55">Lead — SAP Consulting</p>
+          <span class="mt-3 inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-cloud text-ink/60 border border-black/5">5+ yrs experience</span>
+        </div>
+        <!-- Salesforce -->
+        <div class="card p-5">
+          <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-mist/60 to-mint/30 grid place-items-center">
+            <span class="text-6xl" role="img" aria-label="Salesforce">☁️</span>
+          </div>
+          <h3 class="mt-4 font-display font-semibold text-ink">Devansh Joshi</h3>
+          <p class="text-sm text-ink/55">Lead — Salesforce</p>
+          <span class="mt-3 inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-cloud text-ink/60 border border-black/5">5+ yrs experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="py-20 lg:py-24 bg-cloud">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="chip">Outcomes</span>
+        <h2 class="mt-5 font-display font-bold text-[32px] lg:text-[40px] leading-[1.06] tracking-tightest text-ink">
+          Cohort performance, transparently reported.
+        </h2>
+        <p class="mt-4 text-ink/65 text-[16px] leading-[1.7]">
+          SVC Academy measures success in real work delivered after the programme — not in
+          certificates awarded. These metrics are independently tracked across recent cohorts.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card p-6"><div class="font-display font-bold text-4xl text-ink">1.4k<span class="text-royal">+</span></div><div class="mt-1 text-sm text-ink/60">Learners graduated to date</div></div>
+        <div class="card p-6"><div class="font-display font-bold text-4xl text-ink">92<span class="text-royal">%</span></div><div class="mt-1 text-sm text-ink/60">Programme completion rate</div></div>
+        <div class="card p-6"><div class="font-display font-bold text-4xl text-ink">78<span class="text-royal">%</span></div><div class="mt-1 text-sm text-ink/60">Shipped a production project within 3 months</div></div>
+        <div class="card p-6"><div class="font-display font-bold text-4xl text-ink">4.8<span class="text-royal">/5</span></div><div class="mt-1 text-sm text-ink/60">Average cohort satisfaction rating</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 lg:py-28">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="relative overflow-hidden rounded-3xl p-10 lg:p-16 grain
+        bg-[radial-gradient(60%_50%_at_85%_10%,rgba(67,227,194,0.30),transparent_60%),radial-gradient(45%_45%_at_12%_20%,rgba(113,214,252,0.30),transparent_65%),linear-gradient(135deg,#0B1A45_0%,#0E2466_60%,#0B3291_100%)]">
+        <div class="absolute inset-0 grid-lines pointer-events-none"></div>
+        <div class="relative grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-8">
+            <span class="chip chip-dark">Admissions open</span>
+            <h2 class="mt-5 font-display font-bold text-[28px] sm:text-[40px] lg:text-[44px] leading-[1.06] tracking-tightest text-white">
+              Join the next cohort — or commission one for your organisation.
+            </h2>
+          </div>
+          <div class="lg:col-span-4 flex lg:justify-end gap-3 flex-wrap">
+            <a href="contact.html" class="btn btn-primary px-5 py-3 rounded-xl">Apply for admission
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="contact.html" class="btn btn-ghost px-5 py-3 rounded-xl">Speak with admissions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink text-white/70">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+      <div class="grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-5">
+          <div class="flex items-center gap-3">
+            <img src="band_assets/logo-icon.png" alt="SVC" class="h-10 w-auto object-contain bg-white rounded-lg p-1.5"/>
+            <div class="leading-tight">
+              <div class="font-display font-bold text-white">SVC Tech AI Solutions</div>
+              <div class="text-[11px] uppercase tracking-[0.18em] text-white/45">Private Limited</div>
+            </div>
+          </div>
+          <p class="mt-5 max-w-md text-[15px] leading-[1.7]">Strategic Vision Coder — building intelligent, scalable and future-ready AI systems that help businesses innovate, automate and grow with confidence.</p>
+        </div>
+        <div class="lg:col-span-2">
+          <div class="text-white font-display font-semibold text-sm uppercase tracking-wider">Explore</div>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li><a href="products.html"  class="hover:text-white transition-colors">Products</a></li>
+            <li><a href="services.html"  class="hover:text-white transition-colors">Services</a></li>
+            <li><a href="education.html" class="hover:text-white transition-colors">Education</a></li>
+            <li><a href="about.html"     class="hover:text-white transition-colors">About</a></li>
+            <li><a href="contact.html"   class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-2">
+          <div class="text-white font-display font-semibold text-sm uppercase tracking-wider">Academy</div>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li>AI Foundations</li>
+            <li>ML Engineering</li>
+            <li>Generative AI</li>
+            <li>Data Engineering</li>
+            <li>Executive AI</li>
+          </ul>
+        </div>
+        <div class="lg:col-span-3">
+          <div class="text-white font-display font-semibold text-sm uppercase tracking-wider">Stay in the loop</div>
+          <p class="mt-4 text-sm">Cohort announcements and AI insights. No spam.</p>
+          <form class="mt-4 flex gap-2" onsubmit="event.preventDefault()">
+            <input type="email" required placeholder="you@company.com"
+              class="flex-1 min-w-0 rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-mint/60 focus:ring-2 focus:ring-mint/20"/>
+            <button class="btn btn-primary px-3 py-2 rounded-lg text-sm">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
+        <div>© 2026 SVC Tech AI Solutions Private Limited. All rights reserved.</div>
+        <div class="flex items-center gap-5">
+          <a href="#" class="hover:text-white transition-colors">Privacy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms</a>
+          <a href="#" class="hover:text-white transition-colors">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Education hero motion · curriculum cascade -->
+  <script>
+    (function () {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const stage = document.getElementById('eduStage');
+      if (!stage) return;
+
+      const wrap   = stage.parentElement;
+      const cards  = Array.from(stage.querySelectorAll('.edu-card'));
+      const tabs   = Array.from(stage.querySelectorAll('.edu-tab'));
+      const pill   = stage.querySelector('.edu-tab-pill');
+      const rail   = stage.querySelector('#eduRail');
+
+      const tracks = {
+        ds:  cards.filter(c => c.dataset.track === 'ds'),
+        web: cards.filter(c => c.dataset.track === 'web'),
+      };
+
+      let curTrack = 'ds';
+      let curIdx   = 0;
+      let timer    = null;
+      const CYCLE_MS = 2600;
+
+      function renderRail() {
+        const n = tracks[curTrack].length;
+        rail.innerHTML = '';
+        for (let i = 0; i < n; i++) {
+          const d = document.createElement('span');
+          d.className = 'rail-dot' + (i === curIdx ? ' is-active' : '');
+          rail.appendChild(d);
+        }
+      }
+
+      function paintStates() {
+        // Hide non-active track entirely
+        cards.forEach(c => {
+          if (c.dataset.track !== curTrack) {
+            c.className = 'edu-card s-hidden';
+          }
+        });
+        const list = tracks[curTrack];
+        const n = list.length;
+        list.forEach((c, i) => {
+          // relative index: 0=active, 1=next, 2=after-next, n-1=prev, else hidden
+          const rel = (i - curIdx + n) % n;
+          let cls = 's-hidden';
+          if (rel === 0)            cls = 's-active';
+          else if (rel === 1)       cls = 's-next';
+          else if (rel === 2)       cls = 's-after';
+          else if (rel === n - 1)   cls = 's-prev';
+          c.className = 'edu-card ' + cls;
+        });
+        // Rail
+        Array.from(rail.children).forEach((d, i) => {
+          d.classList.toggle('is-active', i === curIdx);
+        });
+      }
+
+      function placeTabPill() {
+        const active = tabs.find(t => t.classList.contains('is-active'));
+        if (!active) return;
+        const parent = active.parentElement.getBoundingClientRect();
+        const r = active.getBoundingClientRect();
+        pill.style.setProperty('--pill-x', (r.left - parent.left) + 'px');
+        pill.style.setProperty('--pill-w', r.width + 'px');
+      }
+
+      function setTrack(t, fromUser) {
+        if (curTrack === t) return;
+        curTrack = t;
+        curIdx = 0;
+        tabs.forEach(b => b.classList.toggle('is-active', b.dataset.track === t));
+        placeTabPill();
+        renderRail();
+        paintStates();
+        if (fromUser) restart();
+      }
+
+      function advance() {
+        const list = tracks[curTrack];
+        curIdx = (curIdx + 1) % list.length;
+        // Auto-swap to the other track after a full pass
+        if (curIdx === 0) {
+          curTrack = (curTrack === 'ds') ? 'web' : 'ds';
+          tabs.forEach(b => b.classList.toggle('is-active', b.dataset.track === curTrack));
+          placeTabPill();
+          renderRail();
+        }
+        paintStates();
+      }
+
+      function start() { if (!reduceMotion) timer = setInterval(advance, CYCLE_MS); }
+      function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+      function restart() { stop(); start(); }
+
+      // Init
+      renderRail();
+      paintStates();
+      requestAnimationFrame(placeTabPill);
+
+      // Tab clicks
+      tabs.forEach(b => b.addEventListener('click', () => setTrack(b.dataset.track, true)));
+
+      // Pause on hover (so users can read)
+      stage.addEventListener('mouseenter', stop);
+      stage.addEventListener('mouseleave', start);
+
+      // 3D parallax
+      if (!reduceMotion) {
+        const MAX = 6;
+        wrap.addEventListener('mousemove', (e) => {
+          const r = wrap.getBoundingClientRect();
+          const nx = (e.clientX - r.left) / r.width  - 0.5;
+          const ny = (e.clientY - r.top)  / r.height - 0.5;
+          stage.style.setProperty('--rx', (nx *  MAX).toFixed(2) + 'deg');
+          stage.style.setProperty('--ry', (ny * -MAX).toFixed(2) + 'deg');
+        });
+        wrap.addEventListener('mouseleave', () => {
+          stage.style.setProperty('--rx', '0deg');
+          stage.style.setProperty('--ry', '0deg');
+        });
+      }
+
+      // Recalc pill on resize
+      window.addEventListener('resize', placeTabPill);
+
+      start();
+    })();
+  </script>
+</body>
+</html>

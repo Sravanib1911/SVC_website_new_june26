@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+**/.DS_Store
+
+# Editor / tooling
+.vscode/
+.idea/
+.claude/
+
+# Dependencies / build artifacts
+node_modules/
+
+# Local screenshots & scratch output (not part of the site)
+temporary screenshots/
+temporary screenshorts/
+
+# Logs
+*.log
+npm-debug.log*

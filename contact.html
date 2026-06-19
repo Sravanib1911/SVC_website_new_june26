@@ -26,6 +26,7 @@
   </script>
   <link rel="stylesheet" href="assets/styles.css">
   <script src="assets/site.js" defer></script>
+  <script src="assets/forms.js" defer></script>
 
   <!-- Premium motion · scoped to contact page -->
   <style>
@@ -679,31 +680,32 @@
       <div class="lg:col-span-7">
         <div class="relative">
           <div class="absolute -inset-6 rounded-[28px] bg-gradient-to-br from-sky/20 via-mint/10 to-royal/10 blur-2xl"></div>
-          <form class="relative rounded-2xl bg-white border border-black/5 shadow-lift p-7 lg:p-9 space-y-5"
-                onsubmit="event.preventDefault(); document.getElementById('thanks').classList.remove('hidden'); this.reset();">
+          <form id="contactForm" class="relative rounded-2xl bg-white border border-black/5 shadow-lift p-7 lg:p-9 space-y-5" novalidate>
+
+            <div id="formSourceBanner" class="hidden inline-flex items-center gap-2 rounded-full bg-royal/10 border border-royal/20 px-3 py-1.5 text-[13px] font-semibold text-royal"></div>
 
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-[13px] font-semibold text-ink/80">Full name</label>
-                <input required type="text" placeholder="Priya Raghavan"
+                <label class="block text-[13px] font-semibold text-ink/80" for="fullName">Full name</label>
+                <input id="fullName" name="fullName" required type="text" placeholder="Priya Raghavan" autocomplete="name"
                   class="mt-1.5 w-full rounded-lg border border-black/10 px-3 py-2.5 text-[14px] bg-cloud/50 focus:outline-none focus:bg-white focus:border-royal/50 focus:ring-4 focus:ring-mint/15"/>
               </div>
               <div>
-                <label class="block text-[13px] font-semibold text-ink/80">Work email</label>
-                <input required type="email" placeholder="you@company.com"
+                <label class="block text-[13px] font-semibold text-ink/80" for="email">Work email</label>
+                <input id="email" name="email" required type="email" placeholder="you@company.com" autocomplete="email"
                   class="mt-1.5 w-full rounded-lg border border-black/10 px-3 py-2.5 text-[14px] bg-cloud/50 focus:outline-none focus:bg-white focus:border-royal/50 focus:ring-4 focus:ring-mint/15"/>
               </div>
             </div>
 
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-[13px] font-semibold text-ink/80">Company</label>
-                <input type="text" placeholder="Northwind Capital"
+                <label class="block text-[13px] font-semibold text-ink/80" for="company">Company</label>
+                <input id="company" name="company" type="text" placeholder="Northwind Capital" autocomplete="organization"
                   class="mt-1.5 w-full rounded-lg border border-black/10 px-3 py-2.5 text-[14px] bg-cloud/50 focus:outline-none focus:bg-white focus:border-royal/50 focus:ring-4 focus:ring-mint/15"/>
               </div>
               <div>
-                <label class="block text-[13px] font-semibold text-ink/80">Phone <span class="text-ink/40 font-normal">(optional)</span></label>
-                <input type="tel" placeholder="+91 ..."
+                <label class="block text-[13px] font-semibold text-ink/80" for="phone">Phone <span class="text-ink/40 font-normal">(optional)</span></label>
+                <input id="phone" name="phone" type="tel" placeholder="+91 ..." autocomplete="tel"
                   class="mt-1.5 w-full rounded-lg border border-black/10 px-3 py-2.5 text-[14px] bg-cloud/50 focus:outline-none focus:bg-white focus:border-royal/50 focus:ring-4 focus:ring-mint/15"/>
               </div>
             </div>
@@ -712,38 +714,42 @@
               <label class="block text-[13px] font-semibold text-ink/80">Areas of interest</label>
               <div class="mt-2 flex flex-wrap gap-2">
                 <label class="cursor-pointer">
-                  <input type="checkbox" class="peer sr-only"/>
+                  <input type="checkbox" name="interest" value="Products" class="peer sr-only"/>
                   <span class="block px-3 py-1.5 rounded-full text-[13px] font-medium border border-black/10 bg-cloud/60 peer-checked:bg-royal peer-checked:text-white peer-checked:border-royal transition-colors">Products</span>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="checkbox" class="peer sr-only"/>
+                  <input type="checkbox" name="interest" value="Services" class="peer sr-only"/>
                   <span class="block px-3 py-1.5 rounded-full text-[13px] font-medium border border-black/10 bg-cloud/60 peer-checked:bg-royal peer-checked:text-white peer-checked:border-royal transition-colors">Services</span>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="checkbox" class="peer sr-only"/>
+                  <input type="checkbox" name="interest" value="AI Strategy" class="peer sr-only"/>
                   <span class="block px-3 py-1.5 rounded-full text-[13px] font-medium border border-black/10 bg-cloud/60 peer-checked:bg-royal peer-checked:text-white peer-checked:border-royal transition-colors">AI Strategy</span>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="checkbox" class="peer sr-only"/>
+                  <input type="checkbox" name="interest" value="Corporate training" class="peer sr-only"/>
                   <span class="block px-3 py-1.5 rounded-full text-[13px] font-medium border border-black/10 bg-cloud/60 peer-checked:bg-royal peer-checked:text-white peer-checked:border-royal transition-colors">Corporate training</span>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="checkbox" class="peer sr-only"/>
+                  <input type="checkbox" name="interest" value="Education" class="peer sr-only"/>
+                  <span class="block px-3 py-1.5 rounded-full text-[13px] font-medium border border-black/10 bg-cloud/60 peer-checked:bg-royal peer-checked:text-white peer-checked:border-royal transition-colors">Education</span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="checkbox" name="interest" value="Talent & Hiring" class="peer sr-only"/>
                   <span class="block px-3 py-1.5 rounded-full text-[13px] font-medium border border-black/10 bg-cloud/60 peer-checked:bg-royal peer-checked:text-white peer-checked:border-royal transition-colors">Talent &amp; Hiring</span>
                 </label>
               </div>
             </div>
 
             <div>
-              <label class="block text-[13px] font-semibold text-ink/80">Project brief</label>
-              <textarea rows="5" required placeholder="What business outcome are you working toward — and what would success look like?"
+              <label class="block text-[13px] font-semibold text-ink/80" for="brief">Project brief</label>
+              <textarea id="brief" name="brief" rows="5" required placeholder="What business outcome are you working toward — and what would success look like?"
                 class="mt-1.5 w-full rounded-lg border border-black/10 px-3 py-2.5 text-[14px] bg-cloud/50 focus:outline-none focus:bg-white focus:border-royal/50 focus:ring-4 focus:ring-mint/15 leading-[1.6]"></textarea>
             </div>
 
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-[13px] font-semibold text-ink/80">Budget range</label>
-                <select class="mt-1.5 w-full rounded-lg border border-black/10 px-3 py-2.5 text-[14px] bg-cloud/50 focus:outline-none focus:bg-white focus:border-royal/50 focus:ring-4 focus:ring-mint/15">
+                <label class="block text-[13px] font-semibold text-ink/80" for="budget">Budget range</label>
+                <select id="budget" name="budget" class="mt-1.5 w-full rounded-lg border border-black/10 px-3 py-2.5 text-[14px] bg-cloud/50 focus:outline-none focus:bg-white focus:border-royal/50 focus:ring-4 focus:ring-mint/15">
                   <option>Not sure yet</option>
                   <option>Under ₹10 lakh</option>
                   <option>₹10–50 lakh</option>
@@ -752,8 +758,8 @@
                 </select>
               </div>
               <div>
-                <label class="block text-[13px] font-semibold text-ink/80">Timeline</label>
-                <select class="mt-1.5 w-full rounded-lg border border-black/10 px-3 py-2.5 text-[14px] bg-cloud/50 focus:outline-none focus:bg-white focus:border-royal/50 focus:ring-4 focus:ring-mint/15">
+                <label class="block text-[13px] font-semibold text-ink/80" for="timeline">Timeline</label>
+                <select id="timeline" name="timeline" class="mt-1.5 w-full rounded-lg border border-black/10 px-3 py-2.5 text-[14px] bg-cloud/50 focus:outline-none focus:bg-white focus:border-royal/50 focus:ring-4 focus:ring-mint/15">
                   <option>Exploring</option>
                   <option>Within 30 days</option>
                   <option>Within 90 days</option>
@@ -763,7 +769,7 @@
             </div>
 
             <div class="flex flex-wrap items-center gap-4 pt-2">
-              <button type="submit" class="btn btn-primary px-5 py-3 rounded-xl">
+              <button id="contactSubmit" type="submit" class="btn btn-primary px-5 py-3 rounded-xl">
                 Submit brief
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
@@ -773,6 +779,7 @@
             <div id="thanks" class="hidden mt-2 rounded-lg bg-mint/15 border border-mint/40 text-ink p-3 text-[14px]">
               Brief received. A senior partner will be in touch within one business day.
             </div>
+            <div id="formError" class="hidden mt-2 rounded-lg bg-red-50 border border-red-200 text-red-800 p-3 text-[14px]"></div>
           </form>
         </div>
       </div>

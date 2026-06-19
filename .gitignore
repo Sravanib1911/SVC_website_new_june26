@@ -17,3 +17,6 @@ temporary screenshorts/
 # Logs
 *.log
 npm-debug.log*
+
+# Secrets
+.env
